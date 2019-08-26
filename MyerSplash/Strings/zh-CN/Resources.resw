@@ -460,4 +460,19 @@
   <data name="ThemeTitle.Text" xml:space="preserve">
     <value>主题</value>
   </data>
+  <data name="BackgroundIntervalHintContent.Text" xml:space="preserve">
+    <value>检查时间间隔</value>
+  </data>
+  <data name="Interval1.Content" xml:space="preserve">
+    <value>1 小时</value>
+  </data>
+  <data name="Interval2.Content" xml:space="preserve">
+    <value>2 小时</value>
+  </data>
+  <data name="Interval4.Content" xml:space="preserve">
+    <value>4 小时</value>
+  </data>
+  <data name="Interval8.Content" xml:space="preserve">
+    <value>8 小时</value>
+  </data>
 </root>

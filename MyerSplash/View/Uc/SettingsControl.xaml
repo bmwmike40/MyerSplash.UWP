@@ -49,7 +49,7 @@
                 Style="{StaticResource ScrollViewerCommonStyle}"
                 VerticalScrollBarVisibility="Hidden"
                 VerticalScrollMode="Auto">
-                <StackPanel Margin="0,20,0,0">
+                <StackPanel Margin="0,20,0,0" x:Name="SPRoot">
                     <TextBlock
                         x:Uid="PersonalizationTitle"
                         Margin="12,12,0,0"
@@ -138,6 +138,41 @@
                             <ComboBoxItem
                                 x:Uid="AutoChangeComboBoxBoth"
                                 Content="Desktop and lockscreen"
+                                Style="{StaticResource ComboBoxItemStyle}" />
+                        </ComboBox>
+
+                        <TextBlock
+                            x:Uid="BackgroundIntervalHintContent"
+                            Margin="12"
+                            FontFamily="Segoe UI"
+                            Visibility="{Binding Source={StaticResource AppSettings}, Path=BackgroundCheckingIntervalVisibilty, Mode=OneWay}"
+                            Foreground="{ThemeResource SystemBaseHighColor}"
+                            Opacity="0.5"
+                            Style="{StaticResource SettingItemTextBlockStyle}"
+                            Text="Checking interval"
+                            TextWrapping="Wrap">
+                        </TextBlock>
+
+                        <ComboBox
+                            Margin="12,0,12,0"
+                            Visibility="{Binding Source={StaticResource AppSettings}, Path=BackgroundCheckingIntervalVisibilty, Mode=OneWay}"
+                            SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=BackgroundCheckingInterval, Mode=TwoWay}"
+                            Style="{StaticResource SettingItemComboBoxStyle}">
+                            <ComboBoxItem
+                                x:Uid="Interval1"
+                                Content="1 Hour"
+                                Style="{StaticResource ComboBoxItemStyle}" />
+                            <ComboBoxItem
+                                x:Uid="Interval2"
+                                Content="2 Hours"
+                                Style="{StaticResource ComboBoxItemStyle}" />
+                            <ComboBoxItem
+                                x:Uid="Interval4"
+                                Content="4 Hours"
+                                Style="{StaticResource ComboBoxItemStyle}" />
+                            <ComboBoxItem
+                                x:Uid="Interval8"
+                                Content="8 Hours"
                                 Style="{StaticResource ComboBoxItemStyle}" />
                         </ComboBox>
                     </StackPanel>

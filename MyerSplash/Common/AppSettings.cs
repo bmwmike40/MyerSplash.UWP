@@ -145,6 +145,7 @@ namespace MyerSplash.Common
             {
                 SaveSettings(nameof(BackgroundWallpaperSource), value);
                 RaisePropertyChanged(() => BackgroundWallpaperSource);
+                RaisePropertyChanged(() => BackgroundCheckingIntervalVisibilty);
 
                 Events.LogBackgroundWallpapersSource(value);
 
@@ -161,6 +162,37 @@ namespace MyerSplash.Common
                         var task1 = BackgroundTaskRegister.RegisterAsync();
                         break;
                 }
+            }
+        }
+
+        public int BackgroundCheckingInterval
+        {
+            get
+            {
+                return ReadSettings(nameof(BackgroundCheckingInterval), 0);
+            }
+            set
+            {
+                SaveSettings(nameof(BackgroundCheckingInterval), value);
+                RaisePropertyChanged(() => BackgroundCheckingInterval);
+
+                Events.LogBackgroundWallpapersInterval(value);
+
+                var _ = ChangeIntervalAsync();
+            }
+        }
+
+        private async Task ChangeIntervalAsync()
+        {
+            await BackgroundTaskRegister.UnregisterAsync();
+            await BackgroundTaskRegister.RegisterAsync();
+        }
+
+        public Visibility BackgroundCheckingIntervalVisibilty
+        {
+            get
+            {
+                return BackgroundWallpaperSource != 0 ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
