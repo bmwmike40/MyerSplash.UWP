@@ -140,7 +140,7 @@
     <value>每日推荐</value>
   </data>
   <data name="New" xml:space="preserve">
-    <value>最新</value>
+    <value>编辑推荐</value>
   </data>
   <data name="Random" xml:space="preserve">
     <value>随机</value>
@@ -474,5 +474,8 @@
   </data>
   <data name="Interval8.Content" xml:space="preserve">
     <value>8 小时</value>
+  </data>
+  <data name="Developer" xml:space="preserve">
+    <value>开发者</value>
   </data>
 </root>

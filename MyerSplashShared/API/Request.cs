@@ -18,7 +18,7 @@ namespace MyerSplashShared.API
 
         public static string GetCategories => $"https://{HOST}/categories?";
 
-        public static string GetFeaturedImages => $"https://{HOST}/collections/featured?";
+        public static string GetDeveloperPhotos => $"https://{HOST}/users/juniperphoton/photos";
 
         public static string GetImageDetail => $"https://{HOST}/photos/";
 

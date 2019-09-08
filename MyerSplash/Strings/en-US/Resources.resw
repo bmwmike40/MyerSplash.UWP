@@ -130,7 +130,7 @@
     <value>HIGHLIGHTS</value>
   </data>
   <data name="New" xml:space="preserve">
-    <value>NEW</value>
+    <value>EDITORIAL</value>
   </data>
   <data name="Random" xml:space="preserve">
     <value>RANDOM</value>
@@ -465,5 +465,8 @@
   </data>
   <data name="Interval8.Content" xml:space="preserve">
     <value>8 Hours</value>
+  </data>
+  <data name="Developer" xml:space="preserve">
+    <value>DEVELOPER</value>
   </data>
 </root>

@@ -32,21 +32,21 @@ namespace MyerSplash.ViewModel
     public class MainViewModel : ViewModelBase, INavigable
     {
         private const int NEW_INDEX = 0;
-        private const int FEATURED_INDEX = 1;
-        private const int RANDOM_INDEX = 2;
-        private const int HIGHLIGHTS_INDEX = 3;
+        private const int RANDOM_INDEX = 1;
+        private const int HIGHLIGHTS_INDEX = 2;
+        private const int DEVELOPER_INDEX = 3;
 
         public static readonly string NewName = ResourceLoader.GetForCurrentView().GetString("New");
-        public static readonly string FeaturedName = ResourceLoader.GetForCurrentView().GetString("Featured");
         public static readonly string RandomName = ResourceLoader.GetForCurrentView().GetString("Random");
         public static readonly string HighlightsName = ResourceLoader.GetForCurrentView().GetString("Highlights");
+        public static readonly string DeveloperName = ResourceLoader.GetForCurrentView().GetString("Developer");
 
         public static readonly Dictionary<int, string> INDEX_TO_NAME = new Dictionary<int, string>()
         {
             { NEW_INDEX,NewName },
-            { FEATURED_INDEX,FeaturedName },
             { RANDOM_INDEX,RandomName },
-            { HIGHLIGHTS_INDEX,HighlightsName }
+            { HIGHLIGHTS_INDEX,HighlightsName },
+            { DEVELOPER_INDEX,DeveloperName },
         };
 
         private readonly Task _initTask;
@@ -548,8 +548,8 @@ namespace MyerSplash.ViewModel
                     case NEW_INDEX:
                         vm = new ImageDataViewModel(this, new ImageService(Request.GetNewImages, NormalFactory, CtsFactory));
                         break;
-                    case FEATURED_INDEX:
-                        vm = new ImageDataViewModel(this, new ImageService(Request.GetFeaturedImages, FeaturedFactory, CtsFactory));
+                    case DEVELOPER_INDEX:
+                        vm = new ImageDataViewModel(this, new ImageService(Request.GetDeveloperPhotos, NormalFactory, CtsFactory));
                         break;
                     case RANDOM_INDEX:
                         vm = new RandomImagesDataViewModel(this, new RandomImageService(NormalFactory, CtsFactory));
