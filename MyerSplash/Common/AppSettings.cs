@@ -5,8 +5,10 @@ using MyerSplash.ViewModel;
 using MyerSplashCustomControl;
 using MyerSplashShared.Utils;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
+using Windows.Devices.Input;
 using Windows.Globalization;
 using Windows.Storage;
 using Windows.UI.Core;
@@ -96,7 +98,8 @@ namespace MyerSplash.Common
         {
             get
             {
-                return UIViewSettings.GetForCurrentView().UserInteractionMode == UserInteractionMode.Touch ? Visibility.Visible : Visibility.Collapsed;
+                var hasTouch = PointerDevice.GetPointerDevices().Any(p => p.PointerDeviceType == PointerDeviceType.Touch || p.PointerDeviceType==PointerDeviceType.Pen);
+                return hasTouch ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
