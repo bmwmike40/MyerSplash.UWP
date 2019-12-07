@@ -92,7 +92,21 @@ namespace MyerSplash.Common
 
         public bool EnableTodayRecommendation => true;
 
-        public bool EnableQuickDownload => true;
+        public Visibility EnableQuickDownload
+        {
+            get
+            {
+                return UIViewSettings.GetForCurrentView().UserInteractionMode == UserInteractionMode.Touch ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        public Visibility HideQuickDownload
+        {
+            get
+            {
+                return EnableQuickDownload == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
 
         public bool EnableScaleAnimation
         {
