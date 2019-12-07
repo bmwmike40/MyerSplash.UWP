@@ -646,7 +646,7 @@ namespace MyerSplash.ViewModel
 
         private async Task ShowFeatureDialogAsync()
         {
-            if (!LocalSettingHelper.HasValue("feature_light_language"))
+            if (false)
             {
                 LocalSettingHelper.AddValue("feature_light_language", true);
                 await Task.Delay(1000);
