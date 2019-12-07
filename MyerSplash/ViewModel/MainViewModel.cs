@@ -42,7 +42,7 @@ namespace MyerSplash.ViewModel
         public static readonly string HighlightsName = ResourceLoader.GetForCurrentView().GetString("Highlights");
         public static readonly string DeveloperName = ResourceLoader.GetForCurrentView().GetString("Developer");
 
-        public static readonly Dictionary<int, string> INDEX_TO_NAME = new Dictionary<int, string>()
+        public static readonly Dictionary<int, string> indexToName = new Dictionary<int, string>()
         {
             { NEW_INDEX,NewName },
             { RANDOM_INDEX,RandomName },
@@ -465,9 +465,9 @@ namespace MyerSplash.ViewModel
 
                     RaisePropertyChanged(() => SelectedIndex);
 
-                    if (INDEX_TO_NAME.ContainsKey(SelectedIndex))
+                    if (indexToName.ContainsKey(SelectedIndex))
                     {
-                        Events.LogSelected(INDEX_TO_NAME[SelectedIndex]);
+                        Events.LogSelected(indexToName[SelectedIndex]);
                     }
 
                     if (value >= 0)
@@ -509,7 +509,9 @@ namespace MyerSplash.ViewModel
             }
         }
 
+#pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
         public bool IsFirstActived { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+#pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
 
         public MainViewModel()
         {
@@ -573,11 +575,13 @@ namespace MyerSplash.ViewModel
         {
             var searchService = new SearchImageService(NormalFactory, CtsFactory, SearchKeyword);
 
-            if (Tabs.Count != INDEX_TO_NAME.Count && Tabs.Count > 0)
+            if (Tabs.Count != indexToName.Count && Tabs.Count > 0)
             {
                 Tabs.RemoveAt(Tabs.Count - 1);
             }
+#pragma warning disable CA1304 // Specify CultureInfo
             Tabs.Add(SearchKeyword.ToUpper());
+#pragma warning restore CA1304 // Specify CultureInfo
 
             SelectedIndex = Tabs.Count - 1;
             DataVM = new SearchResultViewModel(this, searchService);
@@ -622,7 +626,9 @@ namespace MyerSplash.ViewModel
             var vm = _vms[NEW_INDEX];
             if (vm != null)
             {
+#pragma warning disable CA1305 // Specify IFormatProvider
                 var date = DateTime.Now.ToString("yyyyMMdd");
+#pragma warning restore CA1305 // Specify IFormatProvider
                 var first = vm.DataList.FirstOrDefault();
                 if (first != null && first.Image.ID != date)
                 {
@@ -648,7 +654,9 @@ namespace MyerSplash.ViewModel
         {
             if (false)
             {
+#pragma warning disable CS0162 // Unreachable code detected
                 LocalSettingHelper.AddValue("feature_light_language", true);
+#pragma warning restore CS0162 // Unreachable code detected
                 await Task.Delay(1000);
                 var uc = new TipsControl();
                 await PopupService.Instance.ShowAsync(uc);
@@ -718,7 +726,7 @@ namespace MyerSplash.ViewModel
             await _initTask;
 
             SelectedIndex = NEW_INDEX;
-            INDEX_TO_NAME.Select(s => s.Value).ToList().ForEach(s =>
+            indexToName.Select(s => s.Value).ToList().ForEach(s =>
             {
                 Tabs.Add(s);
             });

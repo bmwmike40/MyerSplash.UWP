@@ -320,7 +320,7 @@ namespace MyerSplash.Common
                 if (languages.Count > 0)
                 {
                     var primary = languages[0];
-                    SaveSettings(nameof(Language), primary.Contains("zh") ? 1 : 0);
+                    SaveSettings(nameof(Language), primary?.Contains("zh") ?? false ? 1 : 0);
                 }
             }
 
@@ -349,13 +349,15 @@ namespace MyerSplash.Common
             }
         }
 
-        public async Task<StorageFolder> GetSavingFolderAsync()
+        public static async Task<StorageFolder> GetSavingFolderAsync()
         {
             try
             {
                 return await KnownFolders.PicturesLibrary.CreateFolderAsync("MyerSplash", CreationCollisionOption.OpenIfExists);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return null;
             }

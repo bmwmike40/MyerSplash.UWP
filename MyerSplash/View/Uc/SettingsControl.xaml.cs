@@ -36,15 +36,5 @@ namespace MyerSplash.View.Uc
         {
             this.Presented = false;
         }
-
-        private void CompactModeOffHintImage_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        {
-            CompactModeSwitch.IsOn = false;
-        }
-
-        private void CompactModeOnHintImage_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        {
-            CompactModeSwitch.IsOn = true;
-        }
     }
 }

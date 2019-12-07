@@ -274,7 +274,7 @@ namespace MyerSplash.Model
                 if (_openCommand != null) return _openCommand;
                 return _openCommand = new RelayCommand(async () =>
                   {
-                      var folder = await AppSettings.Instance.GetSavingFolderAsync();
+                      var folder = await AppSettings.GetSavingFolderAsync();
                       if (folder != null)
                       {
                           await Launcher.LaunchFolderAsync(folder);
@@ -346,7 +346,7 @@ namespace MyerSplash.Model
             ImageItem.Init();
             var task = ImageItem.TryLoadBitmapAsync();
 
-            var folder = await AppSettings.Instance.GetSavingFolderAsync();
+            var folder = await AppSettings.GetSavingFolderAsync();
             var item = await folder.TryGetItemAsync(ImageItem.GetFileNameForDownloading());
             if (item != null)
             {
@@ -404,7 +404,7 @@ namespace MyerSplash.Model
 
             try
             {
-                savedFolder = await AppSettings.Instance.GetSavingFolderAsync();
+                savedFolder = await AppSettings.GetSavingFolderAsync();
                 savedFile = await savedFolder.CreateFileAsync(ImageItem.GetFileNameForDownloading(), CreationCollisionOption.OpenIfExists);
             }
             catch (Exception e)
