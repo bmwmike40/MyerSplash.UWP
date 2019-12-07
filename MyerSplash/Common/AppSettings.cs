@@ -356,14 +356,14 @@ namespace MyerSplash.Common
 
         public async Task<StorageFolder> GetSavingFolderAsync()
         {
-            var folder = await KnownFolders.PicturesLibrary.CreateFolderAsync("MyerSplash", CreationCollisionOption.OpenIfExists);
-            return folder;
-        }
-
-        public async Task<StorageFolder> GetWallpaperFolderAsync()
-        {
-            var folder = await ApplicationData.Current.TemporaryFolder.CreateFolderAsync("WallpapersTemp", CreationCollisionOption.OpenIfExists);
-            return folder;
+            try
+            {
+                return await KnownFolders.PicturesLibrary.CreateFolderAsync("MyerSplash", CreationCollisionOption.OpenIfExists);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         private void SaveSettings(string key, object value)
