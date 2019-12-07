@@ -324,7 +324,14 @@ namespace MyerSplash.Model
 
         public async Task RetryAsync()
         {
-            await DownloadFullImageAsync(_cts = new CancellationTokenSource());
+            try
+            {
+                await DownloadFullImageAsync(_cts = new CancellationTokenSource());
+            }
+            catch (Exception)
+            {
+                ReportFailure();
+            }
         }
 
         public async void UpateUiWhenCompleted()
@@ -474,7 +481,16 @@ namespace MyerSplash.Model
                 ReportFailure();
                 return;
             }
-            Progress = ((double)e.Progress.BytesReceived / e.Progress.TotalBytesToReceive) * 100;
+
+            if (e.Progress.TotalBytesToReceive != 0)
+            {
+                Progress = ((double)e.Progress.BytesReceived / e.Progress.TotalBytesToReceive) * 100;
+            }
+            else
+            {
+                Progress = 0;
+            }
+
             Debug.WriteLine(Progress);
             if (Progress >= 100)
             {
