@@ -148,7 +148,6 @@
                             Height="50"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
-                            Visibility="{Binding Path=HideQuickDownload, Source={StaticResource AppSettings}, Mode=OneWay}"
                             cu:Style="{StaticResource MainButtonCompatStyle}"
                             fcu:Style="{StaticResource MainButtonStyle}"
                             Command="{x:Bind DownloadCommand}"
@@ -163,8 +162,8 @@
                         </Button>
                     </Grid>
                     <Button
-                        Width="48"
-                        Height="48"
+                        Width="50"
+                        Height="50"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Command="{x:Bind DownloadCommand}"

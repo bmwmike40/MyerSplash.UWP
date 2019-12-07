@@ -103,14 +103,6 @@ namespace MyerSplash.Common
             }
         }
 
-        public Visibility HideQuickDownload
-        {
-            get
-            {
-                return EnableQuickDownload == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            }
-        }
-
         public bool EnableScaleAnimation
         {
             get
