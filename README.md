@@ -1,23 +1,25 @@
 # MyerSplash for Windows 10
 
-You can search in Windows Store or visit [this](https://www.microsoft.com/en-us/store/p/myersplash/9nblggh4vcsn) to download.
-
-![](http://juniperphoton.net/myersplash/hero-image.jpg)
+![](./design/hero.jpg)
 
 ## Introduction
-An UWP app that allows you to browse and download high-quality wallpaper from Unsplash.com.
+Yet anothor simple and elegant photos & wallpaper app for all platforms.
 
-AND MyerSplash for Android is open-source too. Visit it [here](https://github.com/JuniperPhoton/MyerSplashAndroid).
+Welcome to visit the [Android](https://github.com/JuniperPhoton/MyerSplash.Android) and [iOS](https://github.com/JuniperPhoton/MyerSplash.iOS) version :)
+
+## Download
+
+Visit the [website](https://juniperphoton.dev/myersplash/) to download all versions.
 
 ## Building
-Make sure you are using Visual Studio 2017 and install the Build 10586 SDK to build project. Any pull requrests are welcomed.
+Make sure you use the latest Visual Studio and have installed the latest UWP SDK to build project. Any pull requrests are welcomed.
 
 ## License 
 The project is released under MIT License.
 
 MIT License
 
-Copyright (c) 2017 JuniperPhoton
+Copyright (c) 2020 JuniperPhoton
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
