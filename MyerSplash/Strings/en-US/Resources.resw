@@ -130,7 +130,7 @@
     <value>HIGHLIGHTS</value>
   </data>
   <data name="New" xml:space="preserve">
-    <value>NEW</value>
+    <value>EDITORIAL</value>
   </data>
   <data name="Random" xml:space="preserve">
     <value>RANDOM</value>
@@ -450,5 +450,23 @@
   </data>
   <data name="ThemeTitle.Text" xml:space="preserve">
     <value>Theme</value>
+  </data>
+  <data name="BackgroundIntervalHintContent.Text" xml:space="preserve">
+    <value>Checking interval</value>
+  </data>
+  <data name="Interval1.Content" xml:space="preserve">
+    <value>1 Hour</value>
+  </data>
+  <data name="Interval2.Content" xml:space="preserve">
+    <value>2 Hours</value>
+  </data>
+  <data name="Interval4.Content" xml:space="preserve">
+    <value>4 Hours</value>
+  </data>
+  <data name="Interval8.Content" xml:space="preserve">
+    <value>8 Hours</value>
+  </data>
+  <data name="Developer" xml:space="preserve">
+    <value>DEVELOPER</value>
   </data>
 </root>

@@ -95,6 +95,11 @@ namespace MyerSplash.Common
             Analytics.TrackEvent("Change background wallpapers source", new Dictionary<string, string> { { "Source", source.ToString() } });
         }
 
+        public static void LogBackgroundWallpapersInterval(int intervalOption)
+        {
+            Analytics.TrackEvent("Change background wallpapers interval", new Dictionary<string, string> { { "Interval", intervalOption.ToString() } });
+        }
+
         public static void LogSwitchLanguage(int itemIndex)
         {
             Analytics.TrackEvent("Change language", new Dictionary<string, string> { { "ItemIndex", itemIndex.ToString() } });

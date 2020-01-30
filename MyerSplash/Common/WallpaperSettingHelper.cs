@@ -1,6 +1,7 @@
 ﻿using MyerSplash.View.Uc;
 using MyerSplashCustomControl;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.System.UserProfile;
@@ -56,9 +57,9 @@ namespace MyerSplash.Common
             Events.LogSetAsBoth();
 
             var uc = new LoadingTextControl() { LoadingText = ResourcesHelper.GetResString("SettingDesktopAndLockHint") };
-            await PopupService.Instance.ShowAsync(uc, solidBackground: false);
+            await PopupService.Instance.ShowAsync(uc, solidBackground: false).ConfigureAwait(true);
 
-            var file = await PrepareImageFileAsync(savedFile);
+            var file = await PrepareImageFileAsync(savedFile).ConfigureAwait(true);
             if (file != null)
             {
                 var result0 = await UserProfilePersonalizationSettings.Current.TrySetWallpaperImageAsync(file);
@@ -80,23 +81,31 @@ namespace MyerSplash.Common
                 ToastService.SendToast(ResourcesHelper.GetResString("SettingWallpaperNotSupported"));
                 return null;
             }
-            if (resultFile != null)
-            {
-                StorageFile file = null;
 
-                //WTF, the file should be copy to LocalFolder to make the setting wallpaer api work.
-                var folder = ApplicationData.Current.LocalFolder;
-                if (await folder.TryGetItemAsync(resultFile.Name) is StorageFile oldFile)
+            try
+            {
+                if (resultFile != null)
                 {
-                    await resultFile.CopyAndReplaceAsync(oldFile);
-                    file = oldFile;
+                    //WTF, the file should be copy to LocalFolder to make the setting wallpaer api work.
+                    var folder = ApplicationData.Current.LocalFolder;
+                    StorageFile file;
+                    if (await folder.TryGetItemAsync(resultFile.Name) is StorageFile oldFile)
+                    {
+                        await resultFile.CopyAndReplaceAsync(oldFile);
+                        file = oldFile;
+                    }
+                    else
+                    {
+                        file = await resultFile.CopyAsync(folder);
+                    }
+                    return file;
                 }
-                else
-                {
-                    file = await resultFile.CopyAsync(folder);
-                }
-                return file;
             }
+            catch (FileNotFoundException)
+            {
+                ShowFailedToast();
+            }
+
             return null;
         }
 

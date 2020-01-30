@@ -38,7 +38,7 @@ namespace MyerSplashShared.Utils
                     {
                         Debug.WriteLine($"===========url {url}==============");
 
-                        await LiveTileUpdater.UpdateLiveTileAsync();
+                        LiveTileUpdater.UpdateLiveTile();
 
                         var imageResp = await client.GetAsync(url);
                         using (var stream = await imageResp.Content.ReadAsStreamAsync())

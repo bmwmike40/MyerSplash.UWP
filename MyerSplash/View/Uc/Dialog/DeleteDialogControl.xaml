@@ -18,20 +18,15 @@
             <Setter Property="FontWeight" Value="Normal" />
         </Style>
     </UserControl.Resources>
-    <Grid
-        Padding="8"
-        Background="{ThemeResource SystemControlChromeLowAcrylicElementBrush}"
-        CornerRadius="2">
+    <Grid Background="{ThemeResource SystemControlChromeLowAcrylicElementBrush}" CornerRadius="2">
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid>
-            <TextBlock
-                x:Uid="CleanupTitle"
-                Style="{StaticResource DialogTitleStyle}"
-                Text="CLEAN UP LIST" />
-        </Grid>
+        <TextBlock
+            x:Uid="CleanupTitle"
+            Style="{StaticResource DialogTitleStyle}"
+            Text="CLEAN UP LIST" />
         <StackPanel Grid.Row="1">
             <Button
                 x:Name="DeleteDownloadingBtn"
@@ -90,10 +85,10 @@
             Click="CancelBtn_Click">
             <Border>
                 <TextBlock
-                    x:Uid="CancelButton"
+                    x:Uid="CloseButton"
                     FontWeight="Bold"
                     Style="{StaticResource OptionTextBlockStyle}"
-                    Text="CANCEL" />
+                    Text="CLOSE" />
             </Border>
         </Button>
     </Grid>

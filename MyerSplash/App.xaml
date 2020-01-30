@@ -12,7 +12,6 @@
                 <ResourceDictionary Source="/ResourceDictionary/StyleDictionary.xaml" />
                 <ResourceDictionary Source="/ResourceDictionary/StringDictionary.xaml" />
                 <ResourceDictionary Source="/ResourceDictionary/DimentionDictionary.xaml" />
-                <ResourceDictionary Source="/ResourceDictionary/BrushDictionary.xaml" />
                 <ResourceDictionary Source="ms-appx:///MyerSplashCustomControl/Themes/CommonStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <ResourceDictionary.ThemeDictionaries>

@@ -114,7 +114,7 @@
                     Visibility="Collapsed">
                     <Image
                         x:Name="TaskBarImage"
-                        Width="180"
+                        Width="198"
                         HorizontalAlignment="Left"
                         Source="ms-appx:///Assets/Image/pc_taskbar_l.png"
                         Stretch="UniformToFill"

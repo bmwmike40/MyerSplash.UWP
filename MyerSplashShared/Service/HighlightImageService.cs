@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using MyerSplash.Data;
 using MyerSplashShared.Data;
@@ -19,11 +18,16 @@ namespace MyerSplashShared.Service
 
         public async override Task<IEnumerable<UnsplashImage>> GetImagesAsync()
         {
-            var list = new ObservableCollection<UnsplashImage>();
+            return await Task.FromResult(GetImages(Page, COUNT));
+        }
 
-            var start = DateTime.Now.AddDays(-(Page - 1) * COUNT);
+        public IEnumerable<UnsplashImage> GetImages(int page, int count)
+        {
+            var list = new List<UnsplashImage>();
 
-            for (var i = 0; i < COUNT; i++)
+            var start = DateTime.Now.AddDays(-(page - 1) * count);
+
+            for (var i = 0; i < count; i++)
             {
                 var next = start.AddDays(-i);
                 if (next < END_TIME)
@@ -33,7 +37,7 @@ namespace MyerSplashShared.Service
                 list.Add(UnsplashImageFactory.CreateHighlightImage(next, true));
             }
 
-            return await Task.FromResult(list);
+            return list;
         }
     }
 }

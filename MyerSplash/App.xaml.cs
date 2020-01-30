@@ -39,8 +39,7 @@ namespace MyerSplash
             InitializeComponent();
             Suspending += OnSuspending;
 
-            // todo: change to DEBUG
-#if true
+#if !DEBUG
             UnhandledException += App_UnhandledException;
 #endif
         }

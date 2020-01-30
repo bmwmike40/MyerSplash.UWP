@@ -63,8 +63,10 @@ namespace MyerSplash.Data
         public static UnsplashImage CreateHighlightImage(DateTime dateTime, bool inHighlightList)
         {
             var date = dateTime.ToString("yyyyMMdd");
+            var year = dateTime.ToString("yyyy");
             var thumbUrl = $"{Request.GetTodayThumbWallpaper}/{date}.jpg";
             var largeUrl = $"{Request.GetTodayWallpaper}/{date}.jpg";
+            var tileUrl = $"{Request.GetTodayTileWallpaper}/{year}/{date}.jpg";
 
             var image = new UnsplashImage()
             {
@@ -76,6 +78,7 @@ namespace MyerSplash.Data
                     Small = thumbUrl,
                     Full = largeUrl,
                     Raw = largeUrl,
+                    Tile = tileUrl
                 },
 
                 ColorValue = DEFAULT_COLOR,

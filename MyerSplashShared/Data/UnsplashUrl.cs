@@ -18,5 +18,8 @@ namespace MyerSplash.Data
 
         [JsonProperty("thumb")]
         public string Thumb { get; set; }
+
+        [JsonProperty("tile")]
+        public string Tile { get; set; }
     }
 }

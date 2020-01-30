@@ -26,27 +26,28 @@ using MyerSplash.View.Uc;
 using MyerSplashCustomControl;
 using JP.Utils.Data;
 using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter.Crashes;
 
 namespace MyerSplash.ViewModel
 {
     public class MainViewModel : ViewModelBase, INavigable
     {
         private const int NEW_INDEX = 0;
-        private const int FEATURED_INDEX = 1;
-        private const int RANDOM_INDEX = 2;
-        private const int HIGHLIGHTS_INDEX = 3;
+        private const int RANDOM_INDEX = 1;
+        private const int HIGHLIGHTS_INDEX = 2;
+        private const int DEVELOPER_INDEX = 3;
 
         public static readonly string NewName = ResourceLoader.GetForCurrentView().GetString("New");
-        public static readonly string FeaturedName = ResourceLoader.GetForCurrentView().GetString("Featured");
         public static readonly string RandomName = ResourceLoader.GetForCurrentView().GetString("Random");
         public static readonly string HighlightsName = ResourceLoader.GetForCurrentView().GetString("Highlights");
+        public static readonly string DeveloperName = ResourceLoader.GetForCurrentView().GetString("Developer");
 
-        public static readonly Dictionary<int, string> INDEX_TO_NAME = new Dictionary<int, string>()
+        public static readonly Dictionary<int, string> indexToName = new Dictionary<int, string>()
         {
             { NEW_INDEX,NewName },
-            { FEATURED_INDEX,FeaturedName },
             { RANDOM_INDEX,RandomName },
-            { HIGHLIGHTS_INDEX,HighlightsName }
+            { HIGHLIGHTS_INDEX,HighlightsName },
+            { DEVELOPER_INDEX,DeveloperName },
         };
 
         private readonly Task _initTask;
@@ -464,9 +465,9 @@ namespace MyerSplash.ViewModel
 
                     RaisePropertyChanged(() => SelectedIndex);
 
-                    if (INDEX_TO_NAME.ContainsKey(SelectedIndex))
+                    if (indexToName.ContainsKey(SelectedIndex))
                     {
-                        Events.LogSelected(INDEX_TO_NAME[SelectedIndex]);
+                        Events.LogSelected(indexToName[SelectedIndex]);
                     }
 
                     if (value >= 0)
@@ -508,7 +509,9 @@ namespace MyerSplash.ViewModel
             }
         }
 
+#pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
         public bool IsFirstActived { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+#pragma warning restore CA1065 // Do not raise exceptions in unexpected locations
 
         public MainViewModel()
         {
@@ -548,8 +551,8 @@ namespace MyerSplash.ViewModel
                     case NEW_INDEX:
                         vm = new ImageDataViewModel(this, new ImageService(Request.GetNewImages, NormalFactory, CtsFactory));
                         break;
-                    case FEATURED_INDEX:
-                        vm = new ImageDataViewModel(this, new ImageService(Request.GetFeaturedImages, FeaturedFactory, CtsFactory));
+                    case DEVELOPER_INDEX:
+                        vm = new ImageDataViewModel(this, new ImageService(Request.GetDeveloperPhotos, NormalFactory, CtsFactory));
                         break;
                     case RANDOM_INDEX:
                         vm = new RandomImagesDataViewModel(this, new RandomImageService(NormalFactory, CtsFactory));
@@ -572,11 +575,13 @@ namespace MyerSplash.ViewModel
         {
             var searchService = new SearchImageService(NormalFactory, CtsFactory, SearchKeyword);
 
-            if (Tabs.Count != INDEX_TO_NAME.Count && Tabs.Count > 0)
+            if (Tabs.Count != indexToName.Count && Tabs.Count > 0)
             {
                 Tabs.RemoveAt(Tabs.Count - 1);
             }
+#pragma warning disable CA1304 // Specify CultureInfo
             Tabs.Add(SearchKeyword.ToUpper());
+#pragma warning restore CA1304 // Specify CultureInfo
 
             SelectedIndex = Tabs.Count - 1;
             DataVM = new SearchResultViewModel(this, searchService);
@@ -621,7 +626,9 @@ namespace MyerSplash.ViewModel
             var vm = _vms[NEW_INDEX];
             if (vm != null)
             {
+#pragma warning disable CA1305 // Specify IFormatProvider
                 var date = DateTime.Now.ToString("yyyyMMdd");
+#pragma warning restore CA1305 // Specify IFormatProvider
                 var first = vm.DataList.FirstOrDefault();
                 if (first != null && first.Image.ID != date)
                 {
@@ -637,28 +644,31 @@ namespace MyerSplash.ViewModel
 
         public void Activate(object param)
         {
-            var task = HandleLaunchArg(param as string);
-            var task2 = UpdateLiveTileAsync();
-            var task3 = ShowFeatureDialogAsync();
+            UpdateLiveTile();
+
+            _ = HandleLaunchArg(param as string);
+            _ = ShowFeatureDialogAsync();
         }
 
         private async Task ShowFeatureDialogAsync()
         {
-            if (!LocalSettingHelper.HasValue("feature_light_language"))
+            if (false)
             {
+#pragma warning disable CS0162 // Unreachable code detected
                 LocalSettingHelper.AddValue("feature_light_language", true);
+#pragma warning restore CS0162 // Unreachable code detected
                 await Task.Delay(1000);
                 var uc = new TipsControl();
                 await PopupService.Instance.ShowAsync(uc);
             }
         }
 
-        private async Task UpdateLiveTileAsync()
+        private void UpdateLiveTile()
         {
             if (App.AppSettings.EnableTile)
             {
                 Debug.WriteLine("About to update tile.");
-                await LiveTileUpdater.UpdateLiveTileAsync();
+                LiveTileUpdater.UpdateLiveTile();
             }
         }
 
@@ -708,7 +718,7 @@ namespace MyerSplash.ViewModel
         private async Task InitAsync()
         {
             await Keys.Instance.InitializeAsync();
-            AppCenter.Start(Keys.Instance.AppCenterKey, typeof(Analytics), typeof(Push));
+            AppCenter.Start(Keys.Instance.AppCenterKey, typeof(Analytics), typeof(Push), typeof(Crashes));
         }
 
         private async Task InitOnLoadedAsync()
@@ -716,7 +726,7 @@ namespace MyerSplash.ViewModel
             await _initTask;
 
             SelectedIndex = NEW_INDEX;
-            INDEX_TO_NAME.Select(s => s.Value).ToList().ForEach(s =>
+            indexToName.Select(s => s.Value).ToList().ForEach(s =>
             {
                 Tabs.Add(s);
             });

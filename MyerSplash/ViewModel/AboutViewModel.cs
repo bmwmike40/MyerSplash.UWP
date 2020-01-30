@@ -56,15 +56,15 @@ namespace MyerSplash.ViewModel
             }
         }
 
-        private RelayCommand _visitWeiboCommand;
-        public RelayCommand VisitWeiboCommand
+        private RelayCommand _visitUnsplashCommand;
+        public RelayCommand VisitUnsplashCommand
         {
             get
             {
-                if (_visitWeiboCommand != null) return _visitWeiboCommand;
-                return _visitWeiboCommand = new RelayCommand(async () =>
+                if (_visitUnsplashCommand != null) return _visitUnsplashCommand;
+                return _visitUnsplashCommand = new RelayCommand(async () =>
                 {
-                    await Launcher.LaunchUriAsync(new Uri("http://weibo.com/photon/"));
+                    await Launcher.LaunchUriAsync(new Uri("https://unsplash.com/@juniperphoton"));
                 });
             }
         }

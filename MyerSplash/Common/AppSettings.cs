@@ -5,8 +5,10 @@ using MyerSplash.ViewModel;
 using MyerSplashCustomControl;
 using MyerSplashShared.Utils;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
+using Windows.Devices.Input;
 using Windows.Globalization;
 using Windows.Storage;
 using Windows.UI.Core;
@@ -88,44 +90,16 @@ namespace MyerSplash.Common
             }
         }
 
-        public bool EnableTile
+        public bool EnableTile => true;
+
+        public bool EnableTodayRecommendation => true;
+
+        public Visibility EnableQuickDownload
         {
             get
             {
-                return ReadSettings(nameof(EnableTile), true);
-            }
-            set
-            {
-                SaveSettings(nameof(EnableTile), value);
-                RaisePropertyChanged(() => EnableTile);
-
-                Events.LogTile(value);
-
-                if (!value)
-                {
-                    LiveTileUpdater.CleanUpTile();
-                }
-            }
-        }
-
-        public bool EnableTodayRecommendation
-        {
-            get
-            {
-                return true;
-            }
-        }
-
-        public bool EnableQuickDownload
-        {
-            get
-            {
-                return ReadSettings(nameof(EnableQuickDownload), false);
-            }
-            set
-            {
-                SaveSettings(nameof(EnableQuickDownload), value);
-                RaisePropertyChanged(() => EnableQuickDownload);
+                var hasTouch = PointerDevice.GetPointerDevices().Any(p => p.PointerDeviceType == PointerDeviceType.Touch || p.PointerDeviceType==PointerDeviceType.Pen);
+                return hasTouch ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
@@ -180,6 +154,7 @@ namespace MyerSplash.Common
             {
                 SaveSettings(nameof(BackgroundWallpaperSource), value);
                 RaisePropertyChanged(() => BackgroundWallpaperSource);
+                RaisePropertyChanged(() => BackgroundCheckingIntervalVisibilty);
 
                 Events.LogBackgroundWallpapersSource(value);
 
@@ -196,6 +171,37 @@ namespace MyerSplash.Common
                         var task1 = BackgroundTaskRegister.RegisterAsync();
                         break;
                 }
+            }
+        }
+
+        public int BackgroundCheckingInterval
+        {
+            get
+            {
+                return ReadSettings(nameof(BackgroundCheckingInterval), 0);
+            }
+            set
+            {
+                SaveSettings(nameof(BackgroundCheckingInterval), value);
+                RaisePropertyChanged(() => BackgroundCheckingInterval);
+
+                Events.LogBackgroundWallpapersInterval(value);
+
+                var _ = ChangeIntervalAsync();
+            }
+        }
+
+        private async Task ChangeIntervalAsync()
+        {
+            await BackgroundTaskRegister.UnregisterAsync();
+            await BackgroundTaskRegister.RegisterAsync();
+        }
+
+        public Visibility BackgroundCheckingIntervalVisibilty
+        {
+            get
+            {
+                return BackgroundWallpaperSource != 0 ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
@@ -288,7 +294,10 @@ namespace MyerSplash.Common
                     }
                 }
 
-                Events.LogSwitchTheme(value);
+                if (!_constructing)
+                {
+                    Events.LogSwitchTheme(value);
+                }
             }
         }
 
@@ -311,7 +320,7 @@ namespace MyerSplash.Common
                 if (languages.Count > 0)
                 {
                     var primary = languages[0];
-                    SaveSettings(nameof(Language), primary.Contains("zh") ? 1 : 0);
+                    SaveSettings(nameof(Language), primary?.Contains("zh") ?? false ? 1 : 0);
                 }
             }
 
@@ -340,16 +349,18 @@ namespace MyerSplash.Common
             }
         }
 
-        public async Task<StorageFolder> GetSavingFolderAsync()
+        public static async Task<StorageFolder> GetSavingFolderAsync()
         {
-            var folder = await KnownFolders.PicturesLibrary.CreateFolderAsync("MyerSplash", CreationCollisionOption.OpenIfExists);
-            return folder;
-        }
-
-        public async Task<StorageFolder> GetWallpaperFolderAsync()
-        {
-            var folder = await ApplicationData.Current.TemporaryFolder.CreateFolderAsync("WallpapersTemp", CreationCollisionOption.OpenIfExists);
-            return folder;
+            try
+            {
+                return await KnownFolders.PicturesLibrary.CreateFolderAsync("MyerSplash", CreationCollisionOption.OpenIfExists);
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
+            {
+                return null;
+            }
         }
 
         private void SaveSettings(string key, object value)

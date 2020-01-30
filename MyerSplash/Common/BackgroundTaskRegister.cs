@@ -9,7 +9,7 @@ namespace MyerSplash.Common
     public static class BackgroundTaskRegister
     {
         private static string NAME => "WallpaperAutoChangeTask";
-        private static uint PERIOD_MINS => 240; // 4 hours
+        private static uint PERIOD_HOUR_MINS => 60;
 
         public static async Task RegisterAsync()
         {
@@ -18,8 +18,24 @@ namespace MyerSplash.Common
                 Debug.WriteLine("IsBackgroundTaskRegistered: true");
                 return;
             }
+            uint period;
+            switch (AppSettings.Instance.BackgroundCheckingInterval)
+            {
+                case 0:
+                    period = PERIOD_HOUR_MINS;
+                    break;
+                case 1:
+                    period = PERIOD_HOUR_MINS * 2;
+                    break;
+                case 2:
+                    period = PERIOD_HOUR_MINS * 4;
+                    break;
+                default:
+                    period = PERIOD_HOUR_MINS * 8;
+                    break;
+            };
             await RegisterBackgroundTask(typeof(WallpaperAutoChangeTask),
-                                                    new TimeTrigger(PERIOD_MINS, false),
+                                                    new TimeTrigger(period, false),
                                                     null);
         }
 

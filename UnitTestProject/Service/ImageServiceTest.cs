@@ -14,9 +14,6 @@ namespace UnitTestProject.Service
         private ImageServiceBase _newImageService = new ImageService(Request.GetNewImages,
             new UnsplashImageFactory(false), CancellationTokenSourceFactory.CreateDefault());
 
-        private ImageServiceBase _featuredImageService = new ImageService(Request.GetFeaturedImages,
-            new UnsplashImageFactory(true), CancellationTokenSourceFactory.CreateDefault());
-
         private ImageServiceBase _randomImageService = new RandomImageService(
             new UnsplashImageFactory(false), CancellationTokenSourceFactory.CreateDefault());
 
@@ -24,13 +21,6 @@ namespace UnitTestProject.Service
         public async Task TestGetNewImages()
         {
             var result = await _newImageService.GetImagesAsync();
-            Assert.IsTrue(result?.Count() > 0);
-        }
-
-        [TestMethod]
-        public async Task TestGetFeatureImages()
-        {
-            var result = await _featuredImageService.GetImagesAsync();
             Assert.IsTrue(result?.Count() > 0);
         }
 

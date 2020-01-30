@@ -97,7 +97,7 @@ namespace MyerSplash.ViewModel
                 if (_cpenSavingFolderCommand != null) return _cpenSavingFolderCommand;
                 return _cpenSavingFolderCommand = new RelayCommand(async () =>
                   {
-                      var folder = await AppSettings.Instance.GetSavingFolderAsync();
+                      var folder = await AppSettings.GetSavingFolderAsync();
                       if (folder != null)
                       {
                           await Launcher.LaunchFolderAsync(folder);
@@ -123,7 +123,7 @@ namespace MyerSplash.ViewModel
 
         private async Task ClearTempFileAsync()
         {
-            var folder = await AppSettings.Instance.GetSavingFolderAsync();
+            var folder = await AppSettings.GetSavingFolderAsync();
             var files = await folder.GetFilesAsync();
             if (files != null)
             {

@@ -17,17 +17,17 @@
         <Grid>
             <Button
                 x:Name="CloseBtn"
-                Width="60"
-                Height="60"
+                Width="44"
+                Height="44"
+                Margin="8"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Stretch"
+                VerticalAlignment="Center"
                 Click="CloseBtn_Click"
-                Style="{StaticResource ListButtonStyle}"
+                Style="{StaticResource MainButtonStyle}"
                 Visibility="Visible">
                 <FontIcon
-                    Margin="12"
                     FontFamily="Segoe MDL2 Assets"
-                    FontSize="16"
+                    FontSize="12"
                     Foreground="{ThemeResource SystemBaseHighColor}"
                     Glyph="&#xE106;" />
             </Button>

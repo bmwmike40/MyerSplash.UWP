@@ -38,7 +38,7 @@ namespace MyerSplash.ViewModel
                     _downloadingImages = value;
                     RaisePropertyChanged(() => DownloadingImages);
                     _downloadingImages.CollectionChanged += Value_CollectionChanged;
-                    NoItemVisibility = value.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
+                    NoItemVisibility = _downloadingImages.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
                 }
             }
         }

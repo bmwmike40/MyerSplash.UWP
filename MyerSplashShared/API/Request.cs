@@ -18,13 +18,15 @@ namespace MyerSplashShared.API
 
         public static string GetCategories => $"https://{HOST}/categories?";
 
-        public static string GetFeaturedImages => $"https://{HOST}/collections/featured?";
+        public static string GetDeveloperPhotos => $"https://{HOST}/users/juniperphoton/photos";
 
         public static string GetImageDetail => $"https://{HOST}/photos/";
 
         public static string GetTodayWallpaper => $"https://{JP_HOST}/myersplash/wallpapers";
 
         public static string GetTodayThumbWallpaper => $"https://{JP_HOST}/myersplash/wallpapers/thumbs";
+
+        public static string GetTodayTileWallpaper => $"https://{JP_HOST}/myersplash/wallpapers/tiles";
 
         public static string AppendParamsToUrl(string baseUrl, List<KeyValuePair<string, string>> paramList)
         {
