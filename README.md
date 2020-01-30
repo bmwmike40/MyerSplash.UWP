@@ -14,6 +14,22 @@ Visit the [website](https://juniperphoton.dev/myersplash/) to download all versi
 ## Building
 Make sure you use the latest Visual Studio and have installed the latest UWP SDK to build project. Any pull requrests are welcomed.
 
+Note that in order to access the unsplash API, you must:
+
+- Register as developer in unsplash.com
+- Copy your app secret key
+
+Then create a `./MyerSplash/Assets/Json/keys.json` file and paste the key-values as json:
+
+```json
+{
+    "app_center_key": "xxx",
+    "client_key": "xxx"
+}
+```
+
+This app uses Microsoft's AppCenter to do the analysis, thus you should also have the appcenterKey too.
+
 ## License 
 The project is released under MIT License.
 
