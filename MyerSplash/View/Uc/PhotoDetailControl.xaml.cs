@@ -187,7 +187,6 @@ namespace MyerSplash.View.Uc
             _exifInfoVisual.SetTranslation(new Vector3(0f, 200f, 0f));
             _maskBorderGridVisual.Opacity = 0;
 
-            PhotoSV.ChangeView(null, 0, null);
             StartLoadingAnimation();
         }
 
@@ -249,8 +248,6 @@ namespace MyerSplash.View.Uc
             _animating = true;
 
             MaskBorder.IsHitTestVisible = false;
-
-            PhotoSV.ChangeView(null, 0, null);
 
             ToggleSetAsSP(false);
 
@@ -846,7 +843,6 @@ namespace MyerSplash.View.Uc
         {
             Events.LogDragToDismiss();
             ToggleExifInfo(false);
-            PhotoSV.ChangeView(null, 0, null);
             await HideInternalAsync();
         }
     }
