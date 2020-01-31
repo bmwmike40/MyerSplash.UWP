@@ -27,6 +27,9 @@ using MyerSplashCustomControl;
 using JP.Utils.Data;
 using Microsoft.AppCenter.Push;
 using Microsoft.AppCenter.Crashes;
+using System.IO;
+using Windows.Data.Json;
+using Newtonsoft.Json;
 
 namespace MyerSplash.ViewModel
 {
@@ -89,6 +92,24 @@ namespace MyerSplash.ViewModel
                 {
                     _tabs = value;
                     RaisePropertyChanged(() => Tabs);
+                }
+            }
+        }
+
+
+        private ObservableCollection<PresetSearchWord> _presetSearchKeywords;
+        public ObservableCollection<PresetSearchWord> PresetSearchKeywords
+        {
+            get
+            {
+                return _presetSearchKeywords;
+            }
+            set
+            {
+                if (_presetSearchKeywords != value)
+                {
+                    _presetSearchKeywords = value;
+                    RaisePropertyChanged(() => _presetSearchKeywords);
                 }
             }
         }
@@ -525,6 +546,7 @@ namespace MyerSplash.ViewModel
 
             SelectedIndex = -1;
             Tabs = new ObservableCollection<string>();
+            PresetSearchKeywords = new ObservableCollection<PresetSearchWord>();
 
             DataVM = new ImageDataViewModel(this,
                 new ImageService(Request.GetNewImages, NormalFactory, CtsFactory));
@@ -732,6 +754,28 @@ namespace MyerSplash.ViewModel
             {
                 Tabs.Add(s);
             });
+
+            await InitializeKeywordsAsync();
+        }
+
+        public async Task InitializeKeywordsAsync()
+        {
+            var uri = new Uri("ms-appx:///Assets/Json/preset_keywords.json");
+
+            StorageFile file = null;
+            try
+            {
+                file = await StorageFile.GetFileFromApplicationUriAsync(uri);
+            }
+            catch (FileNotFoundException)
+            {
+                throw new ArgumentNullException("Please create a file named keys.json in assets folder");
+            }
+
+            var jsonString = await FileIO.ReadTextAsync(file);
+
+            var list = JsonConvert.DeserializeObject<List<PresetSearchWord>>(jsonString);
+            list.ForEach(s => PresetSearchKeywords.Add(s));
         }
     }
 }

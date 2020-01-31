@@ -112,6 +112,9 @@
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <Content Include="Assets\Json\preset_keywords.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Design\projectGuides.guides" />
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
@@ -151,6 +154,7 @@
     <Compile Include="Converter\BoolToVisibilityRevertConverter.cs" />
     <Compile Include="Converter\CompactCollapsedConverter.cs" />
     <Compile Include="Converter\CompactVisibleConverter.cs" />
+    <Compile Include="Model\PresetSearchWord.cs" />
     <Compile Include="View\Uc\Dialog\GestureHintControl.xaml.cs">
       <DependentUpon>GestureHintControl.xaml</DependentUpon>
     </Compile>

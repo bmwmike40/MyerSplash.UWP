@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
 using MyerSplash.Common;
+using MyerSplash.Model;
 using MyerSplash.ViewModel;
 using MyerSplashShared.Utils;
 using System;
@@ -107,6 +108,13 @@ namespace MyerSplash.View.Uc
                 }
             };
             batch.End();
+        }
+
+        private void TextBlock_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            var item = (sender as FrameworkElement).DataContext as PresetSearchWord;
+            MainVM.SearchKeyword = item.SearchText;
+            MainVM.BeginSearchCommand.Execute(null);
         }
     }
 }

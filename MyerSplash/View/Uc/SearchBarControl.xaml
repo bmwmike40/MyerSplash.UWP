@@ -7,6 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:fcu="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:model="using:MyerSplash.Model"
     d:DesignHeight="800"
     d:DesignWidth="500"
     mc:Ignorable="d">
@@ -20,10 +22,6 @@
             x:Name="ContentGrid"
             Margin="0,0,0,200"
             VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
             <StackPanel
                 x:Name="SearchBorder"
                 MaxWidth="500"
@@ -87,6 +85,18 @@
                         </Grid>
                     </Button>
                 </Grid>
+                <ItemsControl Margin="12" HorizontalAlignment="Center" ItemsSource="{x:Bind MainVM.PresetSearchKeywords}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="model:PresetSearchWord">
+                            <TextBlock Margin="8" Tapped="TextBlock_Tapped" HorizontalTextAlignment="Center" Text="{x:Bind DisplayText, Mode=OneWay}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:StaggeredPanel DesiredColumnWidth="100"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </StackPanel>
         </Grid>
     </Grid>
