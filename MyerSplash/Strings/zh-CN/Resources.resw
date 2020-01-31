@@ -478,4 +478,13 @@
   <data name="Developer" xml:space="preserve">
     <value>开发者</value>
   </data>
+  <data name="BackgroundChangeSuccess" xml:space="preserve">
+    <value>更换壁纸成功 :)</value>
+  </data>
+  <data name="BackgroundRegisterFailed" xml:space="preserve">
+    <value>应用没有权限修改后台设置</value>
+  </data>
+  <data name="String1BackgroundRegisterSuccess" xml:space="preserve">
+    <value>成功修改后台任务设置</value>
+  </data>
 </root>

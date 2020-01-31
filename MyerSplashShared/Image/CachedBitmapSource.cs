@@ -65,12 +65,9 @@ namespace MyerSplashShared.Image
             var file = await _cacheSupplier.TryGetCacheAsync(cacheKey);
             if (file != null)
             {
-                Debug.WriteLine($"====Find cache file: {cacheKey}");
                 await SetImageSourceAsync(file);
                 return;
             }
-
-            Debug.WriteLine($"====Download file for: {cacheKey}");
 
             var token = CancellationTokenSourceFactory.CreateDefault(ImageDownloader.TIMEOUT_MILLIS).Create().Token;
 

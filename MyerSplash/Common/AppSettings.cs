@@ -169,6 +169,7 @@ namespace MyerSplash.Common
                     // fall through
                     case 3:
                         var task1 = BackgroundTaskRegister.RegisterAsync();
+                        var task2 = SimpleWallpaperSetter.ChangeWallpaperAsync();
                         break;
                 }
             }

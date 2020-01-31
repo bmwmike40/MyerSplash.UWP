@@ -1,4 +1,5 @@
 ﻿using BackgroundTask;
+using MyerSplashCustomControl;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -45,6 +46,7 @@ namespace MyerSplash.Common
             if (status != BackgroundAccessStatus.AlwaysAllowed
                 && status != BackgroundAccessStatus.AllowedSubjectToSystemPolicy)
             {
+                ToastService.SendToast(ResourcesHelper.GetResString("BackgroundRegisterFailed"), TimeSpan.FromMilliseconds(5000));
                 return;
             }
 
@@ -55,6 +57,8 @@ namespace MyerSplash.Common
                     cur.Value.Unregister(true);
                 }
             }
+
+            ToastService.SendToast(ResourcesHelper.GetResString("BackgroundRegisterSuccess"), TimeSpan.FromMilliseconds(5000));
 
             Debug.WriteLine($"===================unregistered===================");
         }
@@ -67,6 +71,7 @@ namespace MyerSplash.Common
             if (status != BackgroundAccessStatus.AlwaysAllowed
                 && status != BackgroundAccessStatus.AllowedSubjectToSystemPolicy)
             {
+                ToastService.SendToast(ResourcesHelper.GetResString("BackgroundRegisterFailed"), TimeSpan.FromMilliseconds(5000));
                 return null;
             }
 
@@ -94,6 +99,7 @@ namespace MyerSplash.Common
             BackgroundTaskRegistration task = builder.Register();
 
             Debug.WriteLine($"===================Task {NAME} registered successfully===================");
+            ToastService.SendToast(ResourcesHelper.GetResString("BackgroundRegisterSuccess"), TimeSpan.FromMilliseconds(5000));
 
             return task;
         }

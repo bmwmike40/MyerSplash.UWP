@@ -469,4 +469,13 @@
   <data name="Developer" xml:space="preserve">
     <value>DEVELOPER</value>
   </data>
+  <data name="BackgroundChangeSuccess" xml:space="preserve">
+    <value>Succeeded to change wallpaper :)</value>
+  </data>
+  <data name="BackgroundRegisterFailed" xml:space="preserve">
+    <value>The app isn't allowed to modify background tasks.</value>
+  </data>
+  <data name="BackgroundRegisterSuccess" xml:space="preserve">
+    <value>Succeeded to change background task settings.</value>
+  </data>
 </root>
