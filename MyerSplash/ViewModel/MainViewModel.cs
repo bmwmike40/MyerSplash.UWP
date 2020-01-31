@@ -652,7 +652,7 @@ namespace MyerSplash.ViewModel
 
         private async Task ShowFeatureDialogAsync()
         {
-            if (false)
+            if (!LocalSettingHelper.HasValue("feature_light_language"))
             {
 #pragma warning disable CS0162 // Unreachable code detected
                 LocalSettingHelper.AddValue("feature_light_language", true);
