@@ -36,8 +36,8 @@ namespace MyerSplash.ViewModel
     public class MainViewModel : ViewModelBase, INavigable
     {
         private const int NEW_INDEX = 0;
-        private const int RANDOM_INDEX = 1;
-        private const int HIGHLIGHTS_INDEX = 2;
+        private const int HIGHLIGHTS_INDEX = 1;
+        private const int RANDOM_INDEX = 2;
         private const int DEVELOPER_INDEX = 3;
 
         public static readonly string NewName = ResourceLoader.GetForCurrentView().GetString("New");
@@ -48,8 +48,8 @@ namespace MyerSplash.ViewModel
         public static readonly Dictionary<int, string> indexToName = new Dictionary<int, string>()
         {
             { NEW_INDEX,NewName },
-            { RANDOM_INDEX,RandomName },
             { HIGHLIGHTS_INDEX,HighlightsName },
+            { RANDOM_INDEX,RandomName },
             { DEVELOPER_INDEX,DeveloperName },
         };
 

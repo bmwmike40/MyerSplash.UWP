@@ -76,7 +76,7 @@
                         FontWeight="Light"
                         Foreground="{ThemeResource SystemBaseHighColor}"
                         Opacity="0.7"
-                        Text="for Windows, macOS, iOS &amp; Android" />
+                        Text="for Windows, macOS, iOS and Android" />
                     <Border
                         Margin="0,12,0,0"
                         Padding="2"
