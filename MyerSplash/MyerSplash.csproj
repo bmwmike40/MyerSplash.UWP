@@ -102,8 +102,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Image\hero.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\logo.png" />
-    <Content Include="Assets\Image\prom.png" />
     <Content Include="Assets\Json\keys.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

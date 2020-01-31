@@ -425,7 +425,7 @@
     <value>⚡ FEATURES</value>
   </data>
   <data name="FeatureContent.Text" xml:space="preserve">
-    <value>Support changing theme and language in settings. ⚙</value>
+    <value>Now MyerSplash supports iOS and macOS.</value>
   </data>
   <data name="LanguageTitle.Text" xml:space="preserve">
     <value>Language</value>
@@ -477,5 +477,8 @@
   </data>
   <data name="BackgroundRegisterSuccess" xml:space="preserve">
     <value>Succeeded to change background task settings.</value>
+  </data>
+  <data name="GoToWebsite.Text" xml:space="preserve">
+    <value>Go to website</value>
   </data>
 </root>
