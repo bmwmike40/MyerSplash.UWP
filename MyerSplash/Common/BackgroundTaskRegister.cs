@@ -58,8 +58,6 @@ namespace MyerSplash.Common
                 }
             }
 
-            ToastService.SendToast(ResourcesHelper.GetResString("BackgroundRegisterSuccess"), TimeSpan.FromMilliseconds(5000));
-
             Debug.WriteLine($"===================unregistered===================");
         }
 
@@ -99,7 +97,6 @@ namespace MyerSplash.Common
             BackgroundTaskRegistration task = builder.Register();
 
             Debug.WriteLine($"===================Task {NAME} registered successfully===================");
-            ToastService.SendToast(ResourcesHelper.GetResString("BackgroundRegisterSuccess"), TimeSpan.FromMilliseconds(5000));
 
             return task;
         }
