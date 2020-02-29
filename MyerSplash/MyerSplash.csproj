@@ -21,7 +21,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>DB04021BBD3203E07DD66A59F0C3C73F12EF9EA5</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>24AC6FBB7E5141DDD2B89FDE3870AAFF698E9FE2</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
@@ -276,14 +276,10 @@
     <Content Include="Assets\tran_logo.scale-200.png" />
     <Content Include="Assets\tran_logo.scale-400.png" />
     <Content Include="Assets\tran_logo.targetsize-16.png" />
-    <Content Include="Assets\tran_logo.targetsize-176_altform-unplated.png" />
     <Content Include="Assets\tran_logo.targetsize-24.png" />
     <Content Include="Assets\tran_logo.targetsize-256.png" />
     <Content Include="Assets\tran_logo.targetsize-32.png" />
-    <Content Include="Assets\tran_logo.targetsize-44.png" />
-    <Content Include="Assets\tran_logo.targetsize-44_altform-unplated.png" />
     <Content Include="Assets\tran_logo.targetsize-48.png" />
-    <Content Include="Assets\tran_logo.targetsize-88_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
@@ -292,7 +288,6 @@
     <Content Include="NewStoreLogo.png" />
     <None Include="Package.xml" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
