@@ -26,8 +26,6 @@ namespace MyerSplashShared.API
 
         public static string GetTodayThumbWallpaper => $"https://{JP_HOST}/myersplash/wallpapers/thumbs";
 
-        public static string GetTodayTileWallpaper => $"https://{JP_HOST}/myersplash/wallpapers/tiles";
-
         public static string AppendParamsToUrl(string baseUrl, List<KeyValuePair<string, string>> paramList)
         {
             var builder = new UriBuilder(baseUrl);
