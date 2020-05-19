@@ -196,6 +196,11 @@ namespace MyerSplash.ViewModel
                 if (_beginSearchCommand != null) return _beginSearchCommand;
                 return _beginSearchCommand = new RelayCommand(async () =>
                   {
+                      if (SearchKeyword == null)
+                      {
+                          return;
+                      }
+
                       if (ShowSearchBar)
                       {
                           ShowSearchBar = false;
@@ -595,6 +600,11 @@ namespace MyerSplash.ViewModel
 
         private async Task SearchByKeywordAsync()
         {
+            if (SearchKeyword == null)
+            {
+                return;
+            }
+
             var searchService = new SearchImageService(NormalFactory, CtsFactory, SearchKeyword);
 
             if (Tabs.Count != indexToName.Count && Tabs.Count > 0)
