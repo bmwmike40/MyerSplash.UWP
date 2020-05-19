@@ -101,7 +101,7 @@ namespace MyerSplash.Common
                     return file;
                 }
             }
-            catch (FileNotFoundException)
+            catch (Exception)
             {
                 ShowFailedToast();
             }
