@@ -679,7 +679,6 @@ namespace MyerSplash.ViewModel
             UpdateLiveTile();
 
             _ = HandleLaunchArg(param as string);
-            _ = ShowFeatureDialogAsync();
         }
 
         private async Task ShowFeatureDialogAsync()
