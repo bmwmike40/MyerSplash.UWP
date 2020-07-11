@@ -130,7 +130,7 @@
     <value>HIGHLIGHTS</value>
   </data>
   <data name="New" xml:space="preserve">
-    <value>EDITORIAL</value>
+    <value>NEW</value>
   </data>
   <data name="Random" xml:space="preserve">
     <value>RANDOM</value>
@@ -425,7 +425,7 @@
     <value>⚡ FEATURES</value>
   </data>
   <data name="FeatureContent.Text" xml:space="preserve">
-    <value>Support changing theme and language in settings. ⚙</value>
+    <value>Now MyerSplash supports iOS and macOS.</value>
   </data>
   <data name="LanguageTitle.Text" xml:space="preserve">
     <value>Language</value>
@@ -468,5 +468,17 @@
   </data>
   <data name="Developer" xml:space="preserve">
     <value>DEVELOPER</value>
+  </data>
+  <data name="BackgroundChangeSuccess" xml:space="preserve">
+    <value>Succeeded to change wallpaper :)</value>
+  </data>
+  <data name="BackgroundRegisterFailed" xml:space="preserve">
+    <value>The app isn't allowed to modify background tasks.</value>
+  </data>
+  <data name="BackgroundRegisterSuccess" xml:space="preserve">
+    <value>Succeeded to change background task settings.</value>
+  </data>
+  <data name="GoToWebsite.Text" xml:space="preserve">
+    <value>Go to website</value>
   </data>
 </root>

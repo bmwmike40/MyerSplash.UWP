@@ -1,4 +1,6 @@
 ﻿using MyerSplashCustomControl;
+using System;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -16,10 +18,9 @@ namespace MyerSplash.View.Uc
             PopupService.Instance.TryHide();
         }
 
-        private async void DiagnoseButton_Click(object sender, RoutedEventArgs e)
+        private async void GoToWebsiteButton_Click(object sender, RoutedEventArgs e)
         {
-            var uc = new NetworkDiagnosisDialog();
-            await PopupService.Instance.ShowAsync(uc);
+            await Launcher.LaunchUriAsync(new Uri("https://juniperphoton.dev/myersplash/"));
         }
     }
 }

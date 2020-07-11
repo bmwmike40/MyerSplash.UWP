@@ -114,6 +114,7 @@
                     <Border Background="{x:Bind BackColorBrush, Mode=OneWay}" Opacity="0.3" />
                     <Image
                         x:Name="Img"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
                         Source="{x:Bind BitmapSource.Bitmap, Mode=OneWay}"
                         Stretch="UniformToFill" />
                     <Grid x:Name="MaskBorder" Background="#53000000">

@@ -7,7 +7,7 @@ namespace MyerSplash.Adapter
     {
         public async override void OnChoosingItemContainer(ListViewBase sender, ChoosingItemContainerEventArgs args)
         {
-            if ((args.Item is DownloadItem item))
+            if (args != null && args.Item is DownloadItem item)
             {
                 await item?.ImageItem?.TryLoadBitmapAsync();
             }

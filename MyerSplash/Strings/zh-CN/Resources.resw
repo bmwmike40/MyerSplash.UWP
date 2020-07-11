@@ -434,7 +434,7 @@
     <value>⚡ 新功能</value>
   </data>
   <data name="FeatureContent.Text" xml:space="preserve">
-    <value>现在支持在设置切换语言和主题了 ⚙</value>
+    <value>现在 MyerSplash 支持 iOS 和 macOS 了。</value>
   </data>
   <data name="LanguageTitle.Text" xml:space="preserve">
     <value>语言</value>
@@ -477,5 +477,17 @@
   </data>
   <data name="Developer" xml:space="preserve">
     <value>开发者</value>
+  </data>
+  <data name="BackgroundChangeSuccess" xml:space="preserve">
+    <value>更换壁纸成功 :)</value>
+  </data>
+  <data name="BackgroundRegisterFailed" xml:space="preserve">
+    <value>应用没有权限修改后台设置</value>
+  </data>
+  <data name="String1BackgroundRegisterSuccess" xml:space="preserve">
+    <value>成功修改后台任务设置</value>
+  </data>
+  <data name="GoToWebsite.Text" xml:space="preserve">
+    <value>前往官网下载</value>
   </data>
 </root>

@@ -29,14 +29,12 @@ namespace MyerSplashShared.Image
         {
             if (_cacheMap.ContainsKey(key))
             {
-                Debug.WriteLine($"Find cache key in map: {key}");
                 return _cacheMap[key];
             }
             var folder = await OpenCacheFolderAsync();
             var file = await folder.TryGetFileAsync(key);
             if (file != null)
             {
-                Debug.WriteLine($"Find cache key in cache folder: {key}");
                 _cacheMap[key] = file;
             }
             return file;

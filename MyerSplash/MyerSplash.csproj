@@ -21,12 +21,15 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>9CA2B5532342BD8BDC66B62086CD01815E3C4080</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>52B78DDB8EAB1C82F4E89B0F0BFF8B428C4D8704</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -102,14 +105,19 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Image\hero.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\logo.png" />
-    <Content Include="Assets\Image\prom.png" />
     <Content Include="Assets\Json\keys.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <Content Include="Assets\Json\preset_keywords.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Design\projectGuides.guides" />
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
@@ -149,6 +157,7 @@
     <Compile Include="Converter\BoolToVisibilityRevertConverter.cs" />
     <Compile Include="Converter\CompactCollapsedConverter.cs" />
     <Compile Include="Converter\CompactVisibleConverter.cs" />
+    <Compile Include="Model\PresetSearchWord.cs" />
     <Compile Include="View\Uc\Dialog\GestureHintControl.xaml.cs">
       <DependentUpon>GestureHintControl.xaml</DependentUpon>
     </Compile>
@@ -267,14 +276,10 @@
     <Content Include="Assets\tran_logo.scale-200.png" />
     <Content Include="Assets\tran_logo.scale-400.png" />
     <Content Include="Assets\tran_logo.targetsize-16.png" />
-    <Content Include="Assets\tran_logo.targetsize-176_altform-unplated.png" />
     <Content Include="Assets\tran_logo.targetsize-24.png" />
     <Content Include="Assets\tran_logo.targetsize-256.png" />
     <Content Include="Assets\tran_logo.targetsize-32.png" />
-    <Content Include="Assets\tran_logo.targetsize-44.png" />
-    <Content Include="Assets\tran_logo.targetsize-44_altform-unplated.png" />
     <Content Include="Assets\tran_logo.targetsize-48.png" />
-    <Content Include="Assets\tran_logo.targetsize-88_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
@@ -283,7 +288,6 @@
     <Content Include="NewStoreLogo.png" />
     <None Include="Package.xml" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />

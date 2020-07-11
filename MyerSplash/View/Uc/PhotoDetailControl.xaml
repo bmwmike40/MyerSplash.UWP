@@ -82,23 +82,16 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Border Background="#FF1B1B1B" />
-                <ScrollViewer
-                    x:Name="PhotoSV"
-                    Background="{x:Null}"
-                    BorderBrush="{x:Null}"
-                    HorizontalScrollMode="Disabled"
-                    Style="{StaticResource ScrollViewerCommonStyle}"
-                    VerticalScrollBarVisibility="Auto"
-                    VerticalScrollMode="Auto">
-                    <Image
+                <Image
                         x:Name="LargeImage"
                         ManipulationCompleted="InfoPlaceHolderGrid_ManipulationCompleted"
                         ManipulationDelta="InfoPlaceHolderGrid_ManipulationDelta"
                         ManipulationMode="TranslateX,TranslateY"
                         ManipulationStarted="InfoPlaceHolderGrid_ManipulationStarted"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
                         Source="{x:Bind CurrentImage.BitmapSource.Bitmap, Mode=OneWay}"
                         Stretch="UniformToFill" />
-                </ScrollViewer>
                 <Image
                     x:Name="LockImage"
                     Width="250"

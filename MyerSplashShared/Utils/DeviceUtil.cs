@@ -1,4 +1,5 @@
-﻿using Windows.ApplicationModel.Resources.Core;
+﻿using System;
+using Windows.ApplicationModel.Resources.Core;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System.Profile;
 
@@ -6,40 +7,71 @@ namespace MyerSplashShared.Utils
 {
     public static class DeviceUtil
     {
+        private static Boolean? _isDesktop;
         public static bool IsDesktop
         {
             get
             {
-                var qualifiers = ResourceContext.GetForCurrentView().QualifierValues;
-                return qualifiers.ContainsKey("DeviceFamily") && qualifiers["DeviceFamily"] == "Desktop";
+                if (_isDesktop == null)
+                {
+                    _isDesktop = HasQualifier("Desktop");
+                }
+                return _isDesktop.Value;
             }
         }
 
+        private static Boolean? _isMobile;
         public static bool IsMobile
         {
             get
             {
-                var qualifiers = ResourceContext.GetForCurrentView().QualifierValues;
-                return qualifiers.ContainsKey("DeviceFamily") && qualifiers["DeviceFamily"] == "Mobile";
+                if (_isMobile == null)
+                {
+                    _isMobile = HasQualifier("Mobile");
+                }
+                return _isMobile.Value;
             }
         }
 
+        private static Boolean? _isIoT;
         public static bool IsIoT
         {
             get
             {
-                var qualifiers = ResourceContext.GetForCurrentView().QualifierValues;
-                return qualifiers.ContainsKey("DeviceFamily") && qualifiers["DeviceFamily"] == "IoT";
+                if (_isIoT == null)
+                {
+                    _isIoT = HasQualifier("IoT");
+                }
+                return _isIoT.Value;
             }
         }
 
+        private static Boolean? _isXbox;
         public static bool IsXbox
         {
             get
             {
-                var qualifiers = ResourceContext.GetForCurrentView().QualifierValues;
-                return qualifiers.ContainsKey("DeviceFamily") && qualifiers["DeviceFamily"] == "Xbox";
+                if (_isXbox == null)
+                {
+                    _isXbox = HasQualifier("Xbox");
+                }
+                return _isXbox.Value;
             }
+        }
+
+        private static bool HasQualifier(string key)
+        {
+            try
+            {
+                var qualifiers = ResourceContext.GetForCurrentView().QualifierValues;
+                return qualifiers.ContainsKey("DeviceFamily") && qualifiers["DeviceFamily"] == "key";
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            return false;
         }
 
         private static string[] GetDeviceOsVersion()

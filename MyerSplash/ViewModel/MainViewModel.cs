@@ -27,14 +27,17 @@ using MyerSplashCustomControl;
 using JP.Utils.Data;
 using Microsoft.AppCenter.Push;
 using Microsoft.AppCenter.Crashes;
+using System.IO;
+using Windows.Data.Json;
+using Newtonsoft.Json;
 
 namespace MyerSplash.ViewModel
 {
     public class MainViewModel : ViewModelBase, INavigable
     {
         private const int NEW_INDEX = 0;
-        private const int RANDOM_INDEX = 1;
-        private const int HIGHLIGHTS_INDEX = 2;
+        private const int HIGHLIGHTS_INDEX = 1;
+        private const int RANDOM_INDEX = 2;
         private const int DEVELOPER_INDEX = 3;
 
         public static readonly string NewName = ResourceLoader.GetForCurrentView().GetString("New");
@@ -45,8 +48,8 @@ namespace MyerSplash.ViewModel
         public static readonly Dictionary<int, string> indexToName = new Dictionary<int, string>()
         {
             { NEW_INDEX,NewName },
-            { RANDOM_INDEX,RandomName },
             { HIGHLIGHTS_INDEX,HighlightsName },
+            { RANDOM_INDEX,RandomName },
             { DEVELOPER_INDEX,DeveloperName },
         };
 
@@ -89,6 +92,24 @@ namespace MyerSplash.ViewModel
                 {
                     _tabs = value;
                     RaisePropertyChanged(() => Tabs);
+                }
+            }
+        }
+
+
+        private ObservableCollection<PresetSearchWord> _presetSearchKeywords;
+        public ObservableCollection<PresetSearchWord> PresetSearchKeywords
+        {
+            get
+            {
+                return _presetSearchKeywords;
+            }
+            set
+            {
+                if (_presetSearchKeywords != value)
+                {
+                    _presetSearchKeywords = value;
+                    RaisePropertyChanged(() => _presetSearchKeywords);
                 }
             }
         }
@@ -175,6 +196,11 @@ namespace MyerSplash.ViewModel
                 if (_beginSearchCommand != null) return _beginSearchCommand;
                 return _beginSearchCommand = new RelayCommand(async () =>
                   {
+                      if (SearchKeyword == null)
+                      {
+                          return;
+                      }
+
                       if (ShowSearchBar)
                       {
                           ShowSearchBar = false;
@@ -525,6 +551,7 @@ namespace MyerSplash.ViewModel
 
             SelectedIndex = -1;
             Tabs = new ObservableCollection<string>();
+            PresetSearchKeywords = new ObservableCollection<PresetSearchWord>();
 
             DataVM = new ImageDataViewModel(this,
                 new ImageService(Request.GetNewImages, NormalFactory, CtsFactory));
@@ -573,6 +600,11 @@ namespace MyerSplash.ViewModel
 
         private async Task SearchByKeywordAsync()
         {
+            if (SearchKeyword == null)
+            {
+                return;
+            }
+
             var searchService = new SearchImageService(NormalFactory, CtsFactory, SearchKeyword);
 
             if (Tabs.Count != indexToName.Count && Tabs.Count > 0)
@@ -652,10 +684,12 @@ namespace MyerSplash.ViewModel
 
         private async Task ShowFeatureDialogAsync()
         {
-            if (false)
+            var key = "prompt_platforms";
+
+            if (!LocalSettingHelper.HasValue(key))
             {
 #pragma warning disable CS0162 // Unreachable code detected
-                LocalSettingHelper.AddValue("feature_light_language", true);
+                LocalSettingHelper.AddValue(key, true);
 #pragma warning restore CS0162 // Unreachable code detected
                 await Task.Delay(1000);
                 var uc = new TipsControl();
@@ -730,6 +764,28 @@ namespace MyerSplash.ViewModel
             {
                 Tabs.Add(s);
             });
+
+            await InitializeKeywordsAsync();
+        }
+
+        public async Task InitializeKeywordsAsync()
+        {
+            var uri = new Uri("ms-appx:///Assets/Json/preset_keywords.json");
+
+            StorageFile file = null;
+            try
+            {
+                file = await StorageFile.GetFileFromApplicationUriAsync(uri);
+            }
+            catch (FileNotFoundException)
+            {
+                throw new ArgumentNullException("Please create a file named keys.json in assets folder");
+            }
+
+            var jsonString = await FileIO.ReadTextAsync(file);
+
+            var list = JsonConvert.DeserializeObject<List<PresetSearchWord>>(jsonString);
+            list.ForEach(s => PresetSearchKeywords.Add(s));
         }
     }
 }
