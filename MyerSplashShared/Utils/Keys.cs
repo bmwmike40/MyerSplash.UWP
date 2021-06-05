@@ -8,9 +8,6 @@ namespace MyerSplashShared.Utils
 {
     public class Keys
     {
-        private static Keys _instance = null;
-        private static readonly object _lock = new object();
-
         public string AppCenterKey { get; private set; }
         public string ClientKey { get; private set; }
 
@@ -19,26 +16,13 @@ namespace MyerSplashShared.Utils
             // private contructor
         }
 
-        public static Keys Instance
-        {
-            get
-            {
-                lock (_lock)
-                {
-                    if (_instance == null)
-                    {
-                        _instance = new Keys();
-                    }
-                    return _instance;
-                }
-            }
-        }
+        public static readonly Keys Instance = new Keys();
 
         public async Task InitializeAsync()
         {
             var uri = new Uri("ms-appx:///Assets/Json/keys.json");
 
-            StorageFile file = null;
+            StorageFile file;
             try
             {
                 file = await StorageFile.GetFileFromApplicationUriAsync(uri);
