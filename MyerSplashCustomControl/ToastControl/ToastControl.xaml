@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:local="using:MyerSplashCustomControl">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///MyerSplashCustomControl/Themes/CommonStyles.xaml" />
@@ -33,28 +32,18 @@
                                 </DoubleAnimationUsingKeyFrames>
                             </Storyboard>
                         </Grid.Resources>
-                        <controls:DropShadowPanel
-                            x:Name="border"
-                            Margin="0,0,0,50"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
-                            Style="{StaticResource DropShadowStyle}">
-                            <controls:DropShadowPanel.RenderTransform>
-                                <CompositeTransform />
-                            </controls:DropShadowPanel.RenderTransform>
-                            <Grid>
-                                <Border
+                        <Grid>
+                            <Border
                                     Background="White"
                                     CornerRadius="2"
                                     Opacity="1" />
-                                <TextBlock
+                            <TextBlock
                                     x:Name="ContentTB"
                                     Margin="20,10"
                                     FontSize="16"
                                     Foreground="Black"
                                     Text="{TemplateBinding ContentText}" />
-                            </Grid>
-                        </controls:DropShadowPanel>
+                        </Grid>
 
                     </Grid>
                 </ControlTemplate>

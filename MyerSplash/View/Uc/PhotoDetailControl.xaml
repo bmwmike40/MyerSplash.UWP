@@ -342,11 +342,7 @@
                     Command="{x:Bind CurrentImage.ShareCommand, Mode=OneWay}"
                     Style="{StaticResource ButtonCommonStyle}">
                     <Grid>
-                        <controls:DropShadowPanel
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource DropShadowStyle}">
-                            <Ellipse
+                       <Ellipse
                                 Width="40"
                                 Height="40"
                                 HorizontalAlignment="Center"
@@ -355,7 +351,6 @@
                                     <SolidColorBrush Color="{StaticResource MyerSplashUnLikedHeartColor}" />
                                 </Ellipse.Fill>
                             </Ellipse>
-                        </controls:DropShadowPanel>
                         <FontIcon
                             x:Name="ShareontIcon"
                             FontFamily="Segoe MDL2 Assets"
@@ -390,15 +385,10 @@
                                 Click="OKBtn_Click"
                                 Style="{StaticResource ButtonCommonStyle}">
                                 <Grid>
-                                    <controls:DropShadowPanel
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Style="{StaticResource DropShadowStyle}">
-                                        <Ellipse
+                                    <Ellipse
                                             Width="50"
                                             Height="50"
                                             Fill="Black" />
-                                    </controls:DropShadowPanel>
                                     <FontIcon
                                         FontFamily="Segoe MDL2 Assets"
                                         FontSize="15"
@@ -419,15 +409,10 @@
                                 Click="OKBtn_Click"
                                 Style="{StaticResource ButtonCommonStyle}">
                                 <Grid>
-                                    <controls:DropShadowPanel
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Style="{StaticResource DropShadowStyle}">
-                                        <Ellipse
+                                     <Ellipse
                                             Width="50"
                                             Height="50"
                                             Fill="Black" />
-                                    </controls:DropShadowPanel>
 
                                     <FontIcon
                                         FontFamily="Segoe MDL2 Assets"
@@ -450,15 +435,10 @@
                                     IsEnabled="True"
                                     Style="{StaticResource ButtonCommonStyle}">
                                     <Grid>
-                                        <controls:DropShadowPanel
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{StaticResource DropShadowStyle}">
-                                            <Ellipse
+                                       <Ellipse
                                                 Width="50"
                                                 Height="50"
                                                 Fill="{StaticResource DownloadingColorBrush}" />
-                                        </controls:DropShadowPanel>
                                         <FontIcon
                                             FontFamily="Segoe MDL2 Assets"
                                             FontSize="15"
@@ -504,17 +484,12 @@
                                 Click="DownloadBtn_Click"
                                 Style="{StaticResource ButtonCommonStyle}">
                                 <Grid>
-                                    <controls:DropShadowPanel
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Style="{StaticResource DropShadowStyle}">
-                                        <Ellipse
+                                    <Ellipse
                                             Width="50"
                                             Height="50"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Fill="{StaticResource MyerSplashThemeColorBrush}" />
-                                    </controls:DropShadowPanel>
                                     <FontIcon
                                         FontFamily="Segoe MDL2 Assets"
                                         Foreground="White"

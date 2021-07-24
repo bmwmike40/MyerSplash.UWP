@@ -2,11 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
-    <Style x:Key="DropShadowStyle" TargetType="controls:DropShadowPanel">
+    <!--<Style x:Key="DropShadowStyle" TargetType="controls:DropShadowPanel">
         <Setter Property="BlurRadius" Value="10" />
         <Setter Property="Color" Value="Black" />
         <Setter Property="OffsetX" Value="1" />
         <Setter Property="OffsetY" Value="1" />
         <Setter Property="ShadowOpacity" Value="0.2" />
-    </Style>
+    </Style>-->
 </ResourceDictionary>

@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Hosting;
+using MUXC = Microsoft.UI.Xaml.Controls;
 
 namespace MyerSplash.View.Page
 {

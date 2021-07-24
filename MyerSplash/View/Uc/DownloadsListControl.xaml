@@ -97,17 +97,12 @@
             Command="{x:Bind DownloadsVM.DeleteFABCommand, Mode=OneWay}"
             Style="{StaticResource FabStyle}">
             <Grid>
-                <controls:DropShadowPanel
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Style="{StaticResource DropShadowStyle}">
-                    <Ellipse
+                <Ellipse
                         Width="40"
                         Height="40"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Fill="White" />
-                </controls:DropShadowPanel>
                 <Grid>
                     <FontIcon
                         FontFamily="Segoe MDL2 Assets"
@@ -116,6 +111,9 @@
                         Glyph="&#xE74D;" />
                 </Grid>
             </Grid>
+            <Button.Shadow>
+                <ThemeShadow/>
+            </Button.Shadow>
         </Button>
     </Grid>
 </common:NavigableUserControl>

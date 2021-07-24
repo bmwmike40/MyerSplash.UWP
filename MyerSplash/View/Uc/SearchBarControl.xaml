@@ -35,27 +35,15 @@
                         <ColumnDefinition Width="436" />
                         <ColumnDefinition Width="40" />
                     </Grid.ColumnDefinitions>
-                    <Border
-                        Height="40"
-                        Margin="12,12,0,12"
-                        VerticalAlignment="Bottom"
-                        BorderThickness="0">
-                        <TextBox
+                    <TextBox
                             x:Name="InputTB"
                             x:Uid="InputEditText"
-                            Height="40"
-                            MinHeight="10"
                             Margin="0"
                             VerticalAlignment="Center"
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
-                            Background="#FF5F5F5F"
-                            BorderBrush="{x:Null}"
-                            BorderThickness="0"
-                            PlaceholderText="Search in English"
-                            Style="{StaticResource SearchTextBoxStyle}"
+                            PlaceholderText="Search in English2"
                             Text="{Binding SearchKeyword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    </Border>
                     <Button
                         Grid.Column="1"
                         Width="40"

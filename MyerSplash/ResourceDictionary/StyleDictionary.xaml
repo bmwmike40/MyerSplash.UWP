@@ -25,11 +25,10 @@
         <Setter Property="Foreground" Value="{ThemeResource SystemBaseHighColor}" />
         <Setter Property="FontSize" Value="14" />
     </Style>
-    <Style x:Key="SettingItemComboBoxStyle" TargetType="ComboBox">
+    <Style x:Key="SettingItemComboBoxStyle" BasedOn="{StaticResource DefaultComboBoxStyle}" TargetType="ComboBox">
         <Setter Property="Margin" Value="12,12,12,0" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="Foreground" Value="{ThemeResource SystemBaseHighColor}" />
-        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
     <Style x:Key="MainPageTitleStyle" TargetType="TextBlock">

@@ -3,17 +3,19 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:common="using:MyerSplash.Common"
-    xmlns:local="using:MyerSplash"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     xmlns:vm="using:MyerSplash.ViewModel">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="/ResourceDictionary/ColorDictionary.xaml" />
                 <ResourceDictionary Source="/ResourceDictionary/StyleDictionary.xaml" />
                 <ResourceDictionary Source="/ResourceDictionary/StringDictionary.xaml" />
                 <ResourceDictionary Source="/ResourceDictionary/DimentionDictionary.xaml" />
                 <ResourceDictionary Source="ms-appx:///MyerSplashCustomControl/Themes/CommonStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light" Source="/ResourceDictionary/LightColorDictionary.xaml" />
                 <ResourceDictionary x:Key="Dark" Source="/ResourceDictionary/DarkColorDictionary.xaml" />
