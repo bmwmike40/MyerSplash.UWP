@@ -107,6 +107,7 @@
                     x:Name="RootGrid"
                     Margin="{Binding Source={StaticResource AppSettings}, Path=ImageMargin, Mode=OneWay}"
                     CanDrag="False"
+                    CornerRadius="{StaticResource GeneralCornerRadius}"
                     Loaded="RootGrid_Loaded"
                     SizeChanged="RootGrid_SizeChanged"
                     Tapped="RootGrid_Tapped"

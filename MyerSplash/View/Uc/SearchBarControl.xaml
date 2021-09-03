@@ -43,7 +43,6 @@
                         <TextBox
                             x:Name="InputTB"
                             x:Uid="InputEditText"
-                            Height="40"
                             MinHeight="10"
                             Margin="0"
                             VerticalAlignment="Center"
@@ -52,8 +51,8 @@
                             Background="#FF5F5F5F"
                             BorderBrush="{x:Null}"
                             BorderThickness="0"
+                            Padding="8"
                             PlaceholderText="Search in English"
-                            Style="{StaticResource SearchTextBoxStyle}"
                             Text="{Binding SearchKeyword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Border>
                     <Button
@@ -67,7 +66,7 @@
                         BorderThickness="0"
                         Command="{x:Bind MainVM.BeginSearchCommand, Mode=OneWay}"
                         Style="{StaticResource ButtonCommonStyle}">
-                        <Grid Background="White">
+                        <Grid>
                             <FontIcon
                                 Margin="0"
                                 HorizontalAlignment="Center"

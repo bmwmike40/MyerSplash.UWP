@@ -94,9 +94,6 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         HorizontalContentAlignment="Left"
-                        cu:Style="{StaticResource MainButtonCompatStyle}"
-                        fcu:Style="{StaticResource MainButtonStyle}"
-                        Background="{ThemeResource SystemListLowColor}"
                         Command="{x:Bind SettingsVM.OpenSavingFolderCommand, Mode=OneWay}">
                         <TextBlock
                             x:Uid="OpenFolderTextBlock"
@@ -121,24 +118,20 @@
                             TextWrapping="Wrap" />
                         <ComboBox
                             Margin="12,0,12,0"
-                            SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=BackgroundWallpaperSource, Mode=TwoWay}"
-                            Style="{StaticResource SettingItemComboBoxStyle}">
+                            HorizontalAlignment="Stretch"
+                            SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=BackgroundWallpaperSource, Mode=TwoWay}">
                             <ComboBoxItem
                                 x:Uid="AutoChangeComboBoxDisable"
-                                Content="Disable"
-                                Style="{StaticResource ComboBoxItemStyle}" />
+                                Content="Disable"/>
                             <ComboBoxItem
                                 x:Uid="AutoChangeComboBoxDesktop"
-                                Content="Desktop"
-                                Style="{StaticResource ComboBoxItemStyle}" />
+                                Content="Desktop" />
                             <ComboBoxItem
                                 x:Uid="AutoChangeComboBoxLockscreen"
-                                Content="Lockscreen"
-                                Style="{StaticResource ComboBoxItemStyle}" />
+                                Content="Lockscreen" />
                             <ComboBoxItem
                                 x:Uid="AutoChangeComboBoxBoth"
-                                Content="Desktop and lockscreen"
-                                Style="{StaticResource ComboBoxItemStyle}" />
+                                Content="Desktop and lockscreen"/>
                         </ComboBox>
 
                         <TextBlock
@@ -156,75 +149,64 @@
                         <ComboBox
                             Margin="12,0,12,0"
                             Visibility="{Binding Source={StaticResource AppSettings}, Path=BackgroundCheckingIntervalVisibilty, Mode=OneWay}"
-                            SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=BackgroundCheckingInterval, Mode=TwoWay}"
-                            Style="{StaticResource SettingItemComboBoxStyle}">
+                            SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=BackgroundCheckingInterval, Mode=TwoWay}">
                             <ComboBoxItem
                                 x:Uid="Interval1"
-                                Content="1 Hour"
-                                Style="{StaticResource ComboBoxItemStyle}" />
+                                Content="1 Hour"/>
                             <ComboBoxItem
                                 x:Uid="Interval2"
-                                Content="2 Hours"
-                                Style="{StaticResource ComboBoxItemStyle}" />
+                                Content="2 Hours"/>
                             <ComboBoxItem
                                 x:Uid="Interval4"
-                                Content="4 Hours"
-                                Style="{StaticResource ComboBoxItemStyle}" />
+                                Content="4 Hours" />
                             <ComboBoxItem
                                 x:Uid="Interval8"
-                                Content="8 Hours"
-                                Style="{StaticResource ComboBoxItemStyle}" />
+                                Content="8 Hours"/>
                         </ComboBox>
                     </StackPanel>
                     <TextBlock
                         x:Uid="SaveQualityTitle"
                         Style="{StaticResource SettingItemTextBlockStyle}"
                         Text="Save quality" />
-                    <ComboBox SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=SaveQuality, Mode=TwoWay}" Style="{StaticResource SettingItemComboBoxStyle}">
+                    <ComboBox Margin="12,0,12,0" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=SaveQuality, Mode=TwoWay}">
                         <ComboBoxItem
                             x:Uid="SaveQualityComboBoxRaw"
-                            Content="Raw"
-                            Style="{StaticResource ComboBoxItemStyle}" />
+                            Content="Raw" />
                         <ComboBoxItem
                             x:Uid="SaveQualityComboBoxHigh"
-                            Content="High (Default)"
-                            Style="{StaticResource ComboBoxItemStyle}" />
+                            Content="High (Default)"/>
                         <ComboBoxItem
                             x:Uid="SaveQualityComboBoxMedium"
-                            Content="Medium"
-                            Style="{StaticResource ComboBoxItemStyle}" />
+                            Content="Medium"/>
                     </ComboBox>
                     <TextBlock
                         x:Uid="ThemeTitle"
                         Style="{StaticResource SettingItemTextBlockStyle}"
                         Text="Theme" />
-                    <ComboBox SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=ThemeMode, Mode=TwoWay}" Style="{StaticResource SettingItemComboBoxStyle}">
+                    <ComboBox Margin="12,0,12,0" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=ThemeMode, Mode=TwoWay}">
                         <ComboBoxItem
                             x:Uid="ThemeComboBoxLight"
-                            Content="Light"
-                            Style="{StaticResource ComboBoxItemStyle}" />
+                            Content="Light"/>
                         <ComboBoxItem
                             x:Uid="ThemeComboBoxDark"
-                            Content="Dark"
-                            Style="{StaticResource ComboBoxItemStyle}" />
+                            Content="Dark"/>
                         <ComboBoxItem
                             x:Uid="ThemeComboBoxSystem"
-                            Content="System"
-                            Style="{StaticResource ComboBoxItemStyle}" />
+                            Content="System" />
                     </ComboBox>
                     <TextBlock
                         x:Uid="LanguageTitle"
                         Style="{StaticResource SettingItemTextBlockStyle}"
                         Text="Language" />
-                    <ComboBox SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=Language, Mode=TwoWay}" Style="{StaticResource SettingItemComboBoxStyle}">
+                    <ComboBox Margin="12,0,12,0" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=Language, Mode=TwoWay}" >
                         <ComboBoxItem
                             x:Uid="LanguageComboBoxEnglish"
                             Content="English"
-                            Style="{StaticResource ComboBoxItemStyle}" />
+                             />
                         <ComboBoxItem
                             x:Uid="LanguageComboBoxChinese"
                             Content="Chinese"
-                            Style="{StaticResource ComboBoxItemStyle}" />
+                             />
                     </ComboBox>
                     <TextBlock
                         Style="{StaticResource SettingItemTextBlockStyle}"
@@ -232,11 +214,11 @@
                         Visibility="Collapsed" />
                     <ComboBox
                         SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=ThemeMode, Mode=TwoWay}"
-                        Style="{StaticResource SettingItemComboBoxStyle}"
+                        
                         Visibility="Collapsed">
-                        <ComboBoxItem Content="Light" Style="{StaticResource ComboBoxItemStyle}" />
-                        <ComboBoxItem Content="Dark" Style="{StaticResource ComboBoxItemStyle}" />
-                        <ComboBoxItem Content="Use my Windows mode" Style="{StaticResource ComboBoxItemStyle}" />
+                        <ComboBoxItem Content="Light"  />
+                        <ComboBoxItem Content="Dark"  />
+                        <ComboBoxItem Content="Use my Windows mode"  />
                     </ComboBox>
                     <TextBlock
                         x:Uid="DiagnoseTitle"
@@ -249,9 +231,6 @@
                         Margin="12"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        cu:Style="{StaticResource MainButtonCompatStyle}"
-                        fcu:Style="{StaticResource MainButtonStyle}"
-                        Background="{ThemeResource SystemListLowColor}"
                         Command="{x:Bind SettingsVM.DiagnoseCommand, Mode=OneWay}">
                         <TextBlock
                             x:Uid="DiagnoseNetworkTextBlock"
@@ -268,9 +247,6 @@
                         Margin="12"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        cu:Style="{StaticResource MainButtonCompatStyle}"
-                        fcu:Style="{StaticResource MainButtonStyle}"
-                        Background="{ThemeResource SystemListLowColor}"
                         Command="{x:Bind SettingsVM.ClearCacheCommand, Mode=OneWay}"
                         IsEnabled="{x:Bind SettingsVM.ClearCacheCommandEnabled, Mode=TwoWay}">
                         <StackPanel Orientation="Horizontal">
@@ -294,9 +270,6 @@
                         Margin="12"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        cu:Style="{StaticResource MainButtonCompatStyle}"
-                        fcu:Style="{StaticResource MainButtonStyle}"
-                        Background="{ThemeResource SystemListLowColor}"
                         Command="{x:Bind SettingsVM.ClearTempCommand, Mode=OneWay}">
                         <TextBlock
                             x:Uid="TempFilesContentTextBlock"

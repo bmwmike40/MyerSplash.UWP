@@ -20,4 +20,5 @@
     <x:Double x:Key="SettingsSwitchItemHeight">48</x:Double>
     <Thickness x:Key="ButtonsStackMargin">2</Thickness>
     <x:Double x:Key="DialogTitleFontSize">20</x:Double>
+    <CornerRadius x:Key="GeneralCornerRadius">8,8,8,8</CornerRadius>
 </ResourceDictionary>
