@@ -21,7 +21,6 @@ namespace MyerSplash.View.Uc
             if (DeviceUtil.IsXbox)
             {
                 AutoChangeSP.Visibility = Visibility.Collapsed;
-                CompatModeGrid.Visibility = Visibility.Collapsed;
             }
         }
 

@@ -72,23 +72,6 @@
                             IsOn="{Binding Source={StaticResource AppSettings}, Path=EnableScaleAnimation, Mode=TwoWay}"
                             Style="{StaticResource ToggleSwitchStyle}" />
                     </Grid>
-                    <Grid x:Name="CompatModeGrid" Height="{StaticResource SettingsSwitchItemHeight}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            x:Uid="CompactModeTextBlock"
-                            Margin="12,0,0,0"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource SettingItemButtonContentStyle}"
-                            Text="Compact mode" />
-                        <ToggleSwitch
-                            x:Name="CompactModeSwitch"
-                            Grid.Column="1"
-                            IsOn="{Binding Source={StaticResource AppSettings}, Path=EnableCompactMode, Mode=TwoWay}"
-                            Style="{StaticResource ToggleSwitchStyle}" />
-                    </Grid>
                     <Button
                         Margin="12"
                         HorizontalAlignment="Stretch"
@@ -117,7 +100,7 @@
                             Text="Change your wallpaper automatically in background every day. Most wallpapers are from Unsplash and some of them are taken by myself :P"
                             TextWrapping="Wrap" />
                         <ComboBox
-                            Margin="12,0,12,0"
+                            Margin="12"
                             HorizontalAlignment="Stretch"
                             SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=BackgroundWallpaperSource, Mode=TwoWay}">
                             <ComboBoxItem
@@ -168,7 +151,7 @@
                         x:Uid="SaveQualityTitle"
                         Style="{StaticResource SettingItemTextBlockStyle}"
                         Text="Save quality" />
-                    <ComboBox Margin="12,0,12,0" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=SaveQuality, Mode=TwoWay}">
+                    <ComboBox Margin="12" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=SaveQuality, Mode=TwoWay}">
                         <ComboBoxItem
                             x:Uid="SaveQualityComboBoxRaw"
                             Content="Raw" />
@@ -183,7 +166,7 @@
                         x:Uid="ThemeTitle"
                         Style="{StaticResource SettingItemTextBlockStyle}"
                         Text="Theme" />
-                    <ComboBox Margin="12,0,12,0" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=ThemeMode, Mode=TwoWay}">
+                    <ComboBox Margin="12" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=ThemeMode, Mode=TwoWay}">
                         <ComboBoxItem
                             x:Uid="ThemeComboBoxLight"
                             Content="Light"/>
@@ -198,7 +181,7 @@
                         x:Uid="LanguageTitle"
                         Style="{StaticResource SettingItemTextBlockStyle}"
                         Text="Language" />
-                    <ComboBox Margin="12,0,12,0" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=Language, Mode=TwoWay}" >
+                    <ComboBox Margin="12" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=Language, Mode=TwoWay}" >
                         <ComboBoxItem
                             x:Uid="LanguageComboBoxEnglish"
                             Content="English"
@@ -214,7 +197,6 @@
                         Visibility="Collapsed" />
                     <ComboBox
                         SelectedIndex="{Binding Source={StaticResource AppSettings}, Path=ThemeMode, Mode=TwoWay}"
-                        
                         Visibility="Collapsed">
                         <ComboBoxItem Content="Light"  />
                         <ComboBoxItem Content="Dark"  />

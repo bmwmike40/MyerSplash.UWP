@@ -80,7 +80,7 @@
     <control:AdaptiveGridView
         x:Name="ImageGridView"
         Margin="0,-30,0,0"
-        Padding="{Binding Source={StaticResource AppSettings}, Path=ImageListPadding, Mode=OneWay}"
+        Padding="8,0,8,0"
         attach:ScrollViewerStyleChanger.Style="{StaticResource ScrollViewerCommonStyle}"
         IncrementalLoadingTrigger="Edge"
         IsItemClickEnabled="True"
@@ -105,7 +105,7 @@
             <DataTemplate x:DataType="model:ImageItem">
                 <Grid
                     x:Name="RootGrid"
-                    Margin="{Binding Source={StaticResource AppSettings}, Path=ImageMargin, Mode=OneWay}"
+                    Margin="8"
                     CanDrag="False"
                     CornerRadius="{StaticResource GeneralCornerRadius}"
                     Loaded="RootGrid_Loaded"

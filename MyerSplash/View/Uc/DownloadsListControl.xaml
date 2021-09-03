@@ -51,7 +51,7 @@
         <cc:AdaptiveGridView
             x:Name="ImageGridView"
             Grid.Row="1"
-            Margin="2"
+            Margin="8"
             attach:ScrollViewerStyleChanger.Style="{StaticResource ScrollViewerCommonStyle}"
             IncrementalLoadingTrigger="Edge"
             ItemsSource="{x:Bind DownloadsVM.DownloadingImages, Mode=OneWay}"

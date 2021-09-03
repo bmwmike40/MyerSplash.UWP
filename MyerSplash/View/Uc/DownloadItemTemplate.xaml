@@ -31,7 +31,8 @@
     </UserControl.Resources>
     <Grid
         x:Name="RootGrid"
-        Margin="4"
+        Margin="8,0,8,0"
+        CornerRadius="{StaticResource GeneralCornerRadius}"
         SizeChanged="RootGrid_SizeChanged">
         <Grid.RowDefinitions>
             <RowDefinition />

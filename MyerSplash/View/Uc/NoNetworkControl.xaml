@@ -33,9 +33,6 @@
             Margin="0,12"
             HorizontalAlignment="Stretch"
             HorizontalContentAlignment="Center"
-            cu:Style="{StaticResource MainButtonCompatStyle}"
-            fcu:Style="{StaticResource MainButtonStyle}"
-            Background="{ThemeResource SystemListLowColor}"
             Click="DiagnoseButton_Click">
             <TextBlock
                 x:Uid="DiagnoseNetworkTextBlock"
