@@ -8,8 +8,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:fcu="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    Width="400"
-    Height="420"
-    d:DesignHeight="420"
+    Height="360"
+    d:DesignHeight="360"
     d:DesignWidth="400"
     mc:Ignorable="d">
     <Grid Background="{ThemeResource SystemControlChromeLowAcrylicElementBrush}">
@@ -54,18 +54,8 @@
             <TextBlock
                 x:Uid="FeatureContent"
                 Foreground="{ThemeResource SystemBaseHighColor}"
-                Text="Support changing theme and language in settings." />
+                Text="Windows 11 support!" />
             <Image Margin="0,12,0,0" Source="/Assets/Image/hero.jpg" />
-            <Button HorizontalAlignment="Stretch"
-                    Margin="0,20,0,0"
-                    Height="50"
-                    x:Name="GoToWebsiteButton"
-                    Click="GoToWebsiteButton_Click"
-                    cu:Style="{StaticResource MainButtonCompatStyle}"
-                    fcu:Style="{StaticResource MainButtonStyle}"
-                    Background="{ThemeResource SystemListLowColor}">
-                <TextBlock x:Uid="GoToWebsite" Text="Go to website"/>
-            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
