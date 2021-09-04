@@ -25,71 +25,6 @@ namespace MyerSplash.Common
 
         public ApplicationDataContainer LocalSettings { get; set; }
 
-        private Thickness _imageMargin;
-        public Thickness ImageMargin
-        {
-            get
-            {
-                return _imageMargin;
-            }
-            set
-            {
-                if (value != _imageMargin)
-                {
-                    _imageMargin = value;
-                    RaisePropertyChanged(() => ImageMargin);
-                }
-            }
-        }
-
-        private Thickness _imageListPadding;
-        public Thickness ImageListPadding
-        {
-            get
-            {
-                return _imageListPadding;
-            }
-            set
-            {
-                if (value != _imageListPadding)
-                {
-                    _imageListPadding = value;
-                    RaisePropertyChanged(() => ImageListPadding);
-                }
-            }
-        }
-
-        public bool EnableCompactMode
-        {
-            get
-            {
-                // No option for Xbox.
-                if (DeviceUtil.IsXbox) return true;
-                return ReadSettings(nameof(EnableCompactMode), false);
-            }
-            set
-            {
-                SaveSettings(nameof(EnableCompactMode), value);
-                RaisePropertyChanged(() => EnableCompactMode);
-
-                if (!_constructing)
-                {
-                    Events.LogCompatMode(value);
-                }
-
-                if (value)
-                {
-                    ImageMargin = new Thickness(0);
-                    ImageListPadding = new Thickness(0);
-                }
-                else
-                {
-                    ImageMargin = new Thickness(8);
-                    ImageListPadding = new Thickness(8, 0, 8, 0);
-                }
-            }
-        }
-
         public bool EnableTile => true;
 
         public bool EnableTodayRecommendation => true;
@@ -308,7 +243,6 @@ namespace MyerSplash.Common
         public AppSettings()
         {
             LocalSettings = ApplicationData.Current.LocalSettings;
-            EnableCompactMode = EnableCompactMode;
             ThemeMode = ThemeMode;
 
             _uiSettings = new UISettings();

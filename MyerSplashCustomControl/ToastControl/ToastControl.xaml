@@ -45,7 +45,7 @@
                             <Grid>
                                 <Border
                                     Background="White"
-                                    CornerRadius="2"
+                                    CornerRadius="8"
                                     Opacity="1" />
                                 <TextBlock
                                     x:Name="ContentTB"

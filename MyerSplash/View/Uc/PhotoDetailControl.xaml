@@ -113,30 +113,6 @@
                         Stretch="UniformToFill"
                         Visibility="Visible" />
                 </Grid>
-                <Button
-                    x:Name="PreviewBtn"
-                    Grid.RowSpan="2"
-                    Width="40"
-                    Height="40"
-                    Margin="12"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom"
-                    Background="{x:Null}"
-                    Click="PreviewBtn_Click"
-                    Style="{StaticResource ButtonCommonStyle}">
-                    <Grid>
-                        <Ellipse Width="32" Height="32">
-                            <Ellipse.Fill>
-                                <SolidColorBrush Color="{StaticResource ToolButtonEllColor}" />
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <FontIcon
-                            FontFamily="Segoe MDL2 Assets"
-                            FontSize="12"
-                            Foreground="White"
-                            Glyph="&#xEB9F;" />
-                    </Grid>
-                </Button>
                 <Grid
                     x:Name="SetAsGrid"
                     Margin="0,0,16,0"

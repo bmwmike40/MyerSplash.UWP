@@ -195,22 +195,6 @@ namespace MyerSplash.View.Page
 
         #region Scrolling
 
-        private void ToggleRefreshBtnAnimation(bool show)
-        {
-            if (!AppSettings.Instance.EnableCompactMode)
-            {
-                return;
-            }
-
-            var scaleAnimation = _compositor.CreateScalarKeyFrameAnimation();
-            scaleAnimation.InsertKeyFrame(1f, show ? 1f : 0);
-            scaleAnimation.Duration = TimeSpan.FromMilliseconds(500);
-
-            _refreshBtnVisual.CenterPoint = new Vector3((float)RefreshBtn.ActualWidth / 2f, (float)RefreshBtn.ActualHeight / 2f, 0f);
-            _refreshBtnVisual.StartAnimation("Scale.X", scaleAnimation);
-            _refreshBtnVisual.StartAnimation("Scale.Y", scaleAnimation);
-        }
-
         private void ToggleTitleContentAnimation(bool show)
         {
             var offsetAnimation = _compositor.CreateScalarKeyFrameAnimation();
@@ -230,22 +214,10 @@ namespace MyerSplash.View.Page
             if ((scrollViewer.VerticalOffset - _lastVerticalOffset) > 5 && !_isHideTitleGrid)
             {
                 _isHideTitleGrid = true;
-                ToggleRefreshBtnAnimation(false);
-
-                if (AppSettings.Instance.EnableCompactMode)
-                {
-                    ToggleTitleContentAnimation(false);
-                }
             }
             else if (scrollViewer.VerticalOffset < _lastVerticalOffset && _isHideTitleGrid)
             {
                 _isHideTitleGrid = false;
-                ToggleRefreshBtnAnimation(true);
-
-                if (AppSettings.Instance.EnableCompactMode)
-                {
-                    ToggleTitleContentAnimation(true);
-                }
             }
             _lastVerticalOffset = scrollViewer.VerticalOffset;
         }
