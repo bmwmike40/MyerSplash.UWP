@@ -689,7 +689,7 @@ namespace MyerSplash.ViewModel
             if (!LocalSettingHelper.HasValue(key))
             {
 #pragma warning disable CS0162 // Unreachable code detected
-                //LocalSettingHelper.AddValue(key, true);
+                LocalSettingHelper.AddValue(key, true);
 #pragma warning restore CS0162 // Unreachable code detected
                 await Task.Delay(1000);
                 var uc = new TipsControl();
