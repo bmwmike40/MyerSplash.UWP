@@ -83,7 +83,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="{StaticResource MyerSplashThemeColorBrush}"
-                        CornerRadius="2">
+                        CornerRadius="8">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
                                 x:Uid="VersionTextBlock"

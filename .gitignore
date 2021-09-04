@@ -248,3 +248,4 @@ project.assets.json
 _pkginfo.txt
 
 MyerSplash/Assets/Json/keys.json
+*.DS_Store

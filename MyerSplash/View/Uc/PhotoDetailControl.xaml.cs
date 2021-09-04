@@ -45,9 +45,6 @@ namespace MyerSplash.View.Uc
         private Visual _infoGridVisual;
         private Visual _loadingPath;
         private Visual _flipperVisual;
-        private Visual _taskbarImageVisual;
-        private Visual _lockScreenImageVisual;
-        private Visual _previewBtnVisual;
         private Visual _setAsSPVisual;
         private Visual _exifInfoVisual;
         private Visual _operationSPVisual;
@@ -162,9 +159,6 @@ namespace MyerSplash.View.Uc
             _loadingPath = LoadingPath.GetVisual();
             _shareBtnVisual = ShareBtn.GetVisual();
             _flipperVisual = FlipperControl.GetVisual();
-            _taskbarImageVisual = TaskBarImageRoot.GetVisual();
-            _lockScreenImageVisual = LockImage.GetVisual();
-            _previewBtnVisual = PreviewBtn.GetVisual();
             _setAsSPVisual = SetAsSP.GetVisual();
             _exifInfoVisual = ExifInfoGrid.GetVisual();
             _operationSPVisual = OperationSP.GetVisual();
@@ -179,9 +173,6 @@ namespace MyerSplash.View.Uc
             _shareBtnVisual.SetTranslation(new Vector3(150f, 0f, 0f));
             _flipperVisual.SetTranslation(new Vector3(170f, 0f, 0f));
             _detailGridVisual.Opacity = 0;
-            _taskbarImageVisual.Opacity = 0;
-            _lockScreenImageVisual.Opacity = 0;
-            _previewBtnVisual.Opacity = 1;
             _setAsSPVisual.Opacity = 0;
             _setAsSPVisual.SetTranslation(new Vector3(0f, 150f, 0f));
             _exifInfoVisual.SetTranslation(new Vector3(0f, 200f, 0f));
@@ -201,15 +192,6 @@ namespace MyerSplash.View.Uc
             {
                 Hide();
             }
-        }
-
-        private void TogglePreviewButtonAnimation(bool show)
-        {
-            _previewBtnVisual.StartBuildAnimation()
-                .Animate(AnimateProperties.Opacity)
-                .To(show ? 1 : 0)
-                .Spend(300)
-                .Start();
         }
 
         private FrameworkElement _listItem;
@@ -250,9 +232,6 @@ namespace MyerSplash.View.Uc
             MaskBorder.IsHitTestVisible = false;
 
             ToggleSetAsSP(false);
-
-            DismissPreview();
-            TogglePreviewButtonAnimation(false);
 
             ToggleFlipperControlAnimation(false);
             ToggleShareBtnAnimation(false);
@@ -343,8 +322,6 @@ namespace MyerSplash.View.Uc
         private void ToggleDetailGridAnimation(bool show)
         {
             IsShown = show;
-
-            TogglePreviewButtonAnimation(show);
 
             var fadeAnimation = _compositor.CreateScalarKeyFrameAnimation();
             fadeAnimation.InsertKeyFrame(1f, show ? 1f : 0f);
@@ -577,86 +554,11 @@ namespace MyerSplash.View.Uc
                 .Start();
         }
 
-        private void TogglePreview()
-        {
-            ToggleSetAsSP(false);
-            _showingPreview++;
-            if (_showingPreview > 2)
-            {
-                _showingPreview = 0;
-            }
-
-            Visual fadingVisual = null;
-            Visual showingVisual = null;
-            switch (_showingPreview)
-            {
-                case 0:
-                    {
-                        fadingVisual = _lockScreenImageVisual;
-                        showingVisual = null;
-                    }
-                    break;
-                case 1:
-                    {
-                        fadingVisual = null;
-                        showingVisual = _taskbarImageVisual;
-                    }
-                    break;
-                case 2:
-                    {
-                        fadingVisual = _taskbarImageVisual;
-                        showingVisual = _lockScreenImageVisual;
-                    }
-                    break;
-                default:
-                    break;
-            }
-            if (fadingVisual != null)
-            {
-                fadingVisual.StartBuildAnimation()
-                    .Animate(AnimateProperties.Opacity)
-                    .To(0)
-                    .Spend(300)
-                    .Start()
-                    .OnCompleted += (sender, e) =>
-                      {
-                          if (_showingPreview == 2)
-                          {
-                              TaskBarImageRoot.Visibility = Visibility.Collapsed;
-                          }
-                          else if (_showingPreview == 0)
-                          {
-                              LockImage.Visibility = Visibility.Collapsed;
-                          }
-                      };
-            }
-            if (showingVisual != null)
-            {
-                if (_showingPreview == 1)
-                {
-                    TaskBarImageRoot.Visibility = Visibility.Visible;
-                }
-                else if (_showingPreview == 2)
-                {
-                    LockImage.Visibility = Visibility.Visible;
-                }
-                showingVisual.StartBuildAnimation()
-                    .Animate(AnimateProperties.Opacity)
-                    .To(1)
-                    .Spend(300)
-                    .Start();
-            }
-        }
-
         private void ToggleSetAsSP(bool show)
         {
             if (FlipperControl.DisplayIndex != 3 && FlipperControl.DisplayIndex != 2)
             {
                 return;
-            }
-            if (show)
-            {
-                DismissPreview();
             }
             if (!show)
             {
@@ -680,29 +582,6 @@ namespace MyerSplash.View.Uc
                   .To(show ? 1 : 0)
                   .Spend(300)
                   .Start();
-        }
-
-        private void DismissPreview()
-        {
-            _showingPreview = 0;
-            _taskbarImageVisual.StartBuildAnimation()
-                   .Animate(AnimateProperties.Opacity)
-                   .To(0)
-                   .Spend(300)
-                   .Start()
-                   .OnCompleted += (sender, e) =>
-                   {
-                       TaskBarImageRoot.Visibility = Visibility.Collapsed;
-                   };
-            _lockScreenImageVisual.StartBuildAnimation()
-                  .Animate(AnimateProperties.Opacity)
-                  .To(0)
-                  .Spend(300)
-                  .Start()
-                  .OnCompleted += (sender, e) =>
-                  {
-                      LockImage.Visibility = Visibility.Collapsed;
-                  };
         }
 
         private void OKBtn_Click(object sender, RoutedEventArgs e)
@@ -742,12 +621,6 @@ namespace MyerSplash.View.Uc
             {
                 await WallpaperSettingHelper.SetBothAsync(CurrentImage.DownloadedFile);
             }
-        }
-
-        private void PreviewBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Events.LogSetAsPreview();
-            TogglePreview();
         }
 
         private void InfoBtn_Click(object sender, RoutedEventArgs e)
@@ -823,7 +696,6 @@ namespace MyerSplash.View.Uc
         {
             InfoPlaceHolderGrid.GetVisual().Opacity = show ? 1f : 0f;
             OperationSP.GetVisual().Opacity = show ? 1f : 0f;
-            PreviewBtn.GetVisual().Opacity = show ? 1f : 0f;
             SetAsGrid.GetVisual().Opacity = show ? 1f : 0f;
         }
 

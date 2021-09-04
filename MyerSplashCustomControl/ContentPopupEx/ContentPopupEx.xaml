@@ -105,7 +105,7 @@
                             VerticalAlignment="Center"
                             RenderTransformOrigin="0.5 0.5"
                             Style="{StaticResource DropShadowStyle}">
-                            <Grid x:Name="ContentGrid" />
+                            <Grid x:Name="ContentGrid" CornerRadius="8"/>
                             <controls:DropShadowPanel.RenderTransform>
                                 <CompositeTransform />
                             </controls:DropShadowPanel.RenderTransform>

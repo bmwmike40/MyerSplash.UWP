@@ -684,7 +684,7 @@ namespace MyerSplash.ViewModel
 
         private async Task ShowFeatureDialogAsync()
         {
-            var key = "prompt_platforms";
+            var key = "windows_11_03";
 
             if (!LocalSettingHelper.HasValue(key))
             {
