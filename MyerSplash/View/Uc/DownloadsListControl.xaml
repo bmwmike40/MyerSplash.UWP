@@ -74,6 +74,44 @@
                     <Setter Property="VerticalContentAlignment" Value="Stretch" />
                     <Setter Property="VerticalAlignment" Value="Stretch" />
                     <Setter Property="Margin" Value="0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="GridViewItem">
+                                <ListViewItemPresenter
+                            x:Name="Root"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            AllowFocusOnInteraction="False"
+                            CheckBoxBrush="{ThemeResource GridViewItemCheckBoxBrush}"
+                            CheckBrush="{ThemeResource GridViewItemCheckBrush}"
+                            CheckMode="{ThemeResource GridViewItemCheckMode}"
+                            ContentMargin="{TemplateBinding Padding}"
+                            ContentTransitions="{TemplateBinding ContentTransitions}"
+                            Control.IsTemplateFocusTarget="True"
+                            DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}"
+                            DragBackground="{ThemeResource GridViewItemDragBackground}"
+                            DragForeground="{ThemeResource GridViewItemDragForeground}"
+                            DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}"
+                            FocusBorderBrush="{ThemeResource GridViewItemFocusBorderBrush}"
+                            FocusSecondaryBorderBrush="{ThemeResource GridViewItemFocusSecondaryBorderBrush}"
+                            FocusVisualMargin="{TemplateBinding FocusVisualMargin}"
+                            FocusVisualPrimaryBrush="{TemplateBinding FocusVisualPrimaryBrush}"
+                            FocusVisualPrimaryThickness="{TemplateBinding FocusVisualPrimaryThickness}"
+                            FocusVisualSecondaryBrush="{TemplateBinding FocusVisualSecondaryBrush}"
+                            FocusVisualSecondaryThickness="{TemplateBinding FocusVisualSecondaryThickness}"
+                            PlaceholderBackground="{ThemeResource GridViewItemPlaceholderBackground}"
+                            PointerOverBackground="{x:Null}"
+                            PointerOverForeground="{x:Null}"
+                            PressedBackground="{x:Null}"
+                            ReorderHintOffset="{ThemeResource GridViewItemReorderHintThemeOffset}"
+                            SelectedBackground="{x:Null}"
+                            SelectedForeground="{x:Null}"
+                            SelectedPointerOverBackground="{x:Null}"
+                            SelectedPressedBackground="{x:Null}"
+                            SelectionCheckMarkVisualEnabled="{ThemeResource GridViewItemSelectionCheckMarkVisualEnabled}" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </cc:AdaptiveGridView.ItemContainerStyle>
         </cc:AdaptiveGridView>
