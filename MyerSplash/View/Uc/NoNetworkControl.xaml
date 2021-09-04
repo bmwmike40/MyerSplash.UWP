@@ -30,7 +30,7 @@
             Text="Something happened" />
         <Button
             x:Name="DiagnoseButton"
-            Margin="0,12"
+            Margin="12"
             HorizontalAlignment="Stretch"
             HorizontalContentAlignment="Center"
             Click="DiagnoseButton_Click">

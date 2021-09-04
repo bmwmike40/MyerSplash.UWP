@@ -128,7 +128,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Content Include="Assets\Icon\touch.png" />
-    <Content Include="Assets\Image\pc_taskbar_l_l.png" />
     <Content Include="Assets\Json\built_in_categories.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -233,9 +232,7 @@
     <None Include="MyerSplash_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Image\lock.png" />
     <Content Include="Assets\Icon\search.png" />
-    <Content Include="Assets\Image\pc_taskbar_l.png" />
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
     <Content Include="Assets\SmallTile.scale-150.png" />
