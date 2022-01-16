@@ -9,6 +9,8 @@ namespace MyerSplashShared.Service
     public class HighlightImageService : ImageServiceBase
     {
         private static DateTime END_TIME => DateTime.Parse("2017/03/20");
+        public static DateTime START_TIME => DateTime.Parse("2021/12/31");
+
         private static int COUNT => 20;
 
         public HighlightImageService(UnsplashImageFactory factory,
@@ -25,7 +27,7 @@ namespace MyerSplashShared.Service
         {
             var list = new List<UnsplashImage>();
 
-            var start = DateTime.Now.AddDays(-(page - 1) * count);
+            var start = START_TIME.AddDays(-(page - 1) * count);
 
             for (var i = 0; i < count; i++)
             {

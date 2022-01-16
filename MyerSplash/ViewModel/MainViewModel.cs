@@ -36,9 +36,9 @@ namespace MyerSplash.ViewModel
     public class MainViewModel : ViewModelBase, INavigable
     {
         private const int NEW_INDEX = 0;
-        private const int HIGHLIGHTS_INDEX = 1;
-        private const int RANDOM_INDEX = 2;
-        private const int DEVELOPER_INDEX = 3;
+        private const int RANDOM_INDEX = 1;
+        private const int DEVELOPER_INDEX = 2;
+        private const int HIGHLIGHTS_INDEX = 3;
 
         public static readonly string NewName = ResourceLoader.GetForCurrentView().GetString("New");
         public static readonly string RandomName = ResourceLoader.GetForCurrentView().GetString("Random");
@@ -48,9 +48,9 @@ namespace MyerSplash.ViewModel
         public static readonly Dictionary<int, string> indexToName = new Dictionary<int, string>()
         {
             { NEW_INDEX,NewName },
-            { HIGHLIGHTS_INDEX,HighlightsName },
             { RANDOM_INDEX,RandomName },
             { DEVELOPER_INDEX,DeveloperName },
+            { HIGHLIGHTS_INDEX,HighlightsName },
         };
 
         private readonly Task _initTask;
@@ -630,48 +630,9 @@ namespace MyerSplash.ViewModel
 
             Events.LogRefreshList(SelectedIndex);
 
-            if (SelectedIndex == NEW_INDEX && AppSettings.Instance.EnableTodayRecommendation)
-            {
-                InsertTodayHighlight();
-            }
-
             IsRefreshing = false;
 
             DataUpdated?.Invoke(this, null);
-        }
-
-        private void RemoveTodayHighlight()
-        {
-            var vm = _vms[NEW_INDEX];
-            if (vm != null)
-            {
-                var first = vm.DataList.FirstOrDefault();
-                if (first != null && !first.Image.IsUnsplash)
-                {
-                    vm.DataList.Remove(first);
-                }
-            }
-        }
-
-        private void InsertTodayHighlight()
-        {
-            var vm = _vms[NEW_INDEX];
-            if (vm != null)
-            {
-#pragma warning disable CA1305 // Specify IFormatProvider
-                var date = DateTime.Now.ToString("yyyyMMdd");
-#pragma warning restore CA1305 // Specify IFormatProvider
-                var first = vm.DataList.FirstOrDefault();
-                if (first != null && first.Image.ID != date)
-                {
-                    RemoveTodayHighlight();
-
-                    var imageItem = new ImageItem(UnsplashImageFactory.CreateTodayHighlightImage());
-                    imageItem.Init();
-
-                    vm.DataList.Insert(0, imageItem);
-                }
-            }
         }
 
         public void Activate(object param)

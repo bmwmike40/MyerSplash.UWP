@@ -109,10 +109,10 @@
     <Content Include="Assets\Image\hero.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\logo.png" />
     <Content Include="Assets\Json\keys.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\logo.png" />
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>

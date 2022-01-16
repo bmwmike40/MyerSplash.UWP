@@ -27,8 +27,6 @@ namespace MyerSplash.Common
 
         public bool EnableTile => true;
 
-        public bool EnableTodayRecommendation => true;
-
         public Visibility EnableQuickDownload
         {
             get
