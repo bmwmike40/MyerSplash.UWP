@@ -338,7 +338,7 @@
     <value>这是如何工作的？</value>
   </data>
   <data name="BackgroundHintContent.Text" xml:space="preserve">
-    <value>每隔 4 个小时会触发一次后台任务，然后会更换“每日推荐”里的壁纸。大多时候“每日推荐”的壁纸都是 Unsplash 的壁纸，但是有时候会是我自己的摄影作品 :P</value>
+    <value>开启后会触发后台任务，然后自动更换壁纸。</value>
   </data>
   <data name="ReportByEmailTextBlock.Text" xml:space="preserve">
     <value>发送邮件</value>

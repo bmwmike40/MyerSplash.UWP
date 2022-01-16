@@ -39,6 +39,7 @@ namespace MyerSplashShared.Service
         {
             var param = GetDefaultParam();
             param.Add(new KeyValuePair<string, string>("count", count.ToString()));
+            param.Add(new KeyValuePair<string, string>("orientation", "landscape"));
 
             var result = await HttpRequestSender.SendGetRequestAsync(Request.AppendParamsToUrl(Request.GetRandomImages, param), token);
             return result;

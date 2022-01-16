@@ -1,5 +1,7 @@
 ﻿using MyerSplash.Common;
 using MyerSplash.Data;
+using MyerSplashShared.Data;
+using MyerSplashShared.Service;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -14,7 +16,23 @@ namespace MyerSplashShared.Utils
     {
         public async static Task ChangeWallpaperAsync()
         {
-            var url = UnsplashImageFactory.CreateTodayHighlightImage().Urls.Full;
+            var service = new RandomImageService(new UnsplashImageFactory(false), CancellationTokenSourceFactory.CreateDefault());
+            var list = await service.GetImagesAsync();
+
+            if (list == null)
+            {
+                return;
+            }
+
+            var enumerator = list.GetEnumerator();
+
+            if (!enumerator.MoveNext())
+            {
+                return;
+            }
+
+            var image = enumerator.Current;
+            var url = image.Urls.Full;
             var result = await DownloadAndSetAsync(url);
             Debug.WriteLine($"===========result {result}==============");
         }
@@ -32,7 +50,13 @@ namespace MyerSplashShared.Utils
                 {
                     var client = new HttpClient();
 
-                    var fileName = Path.GetFileName(url);
+                    var segments = new Uri(url).Segments;
+                    if (segments.Length <= 0)
+                    {
+                        return false;
+                    }
+
+                    var fileName = segments[segments.Length - 1] + ".jpg";
 
                     var pictureLib = await KnownFolders.PicturesLibrary.CreateFolderAsync("MyerSplash",
                         CreationCollisionOption.OpenIfExists);

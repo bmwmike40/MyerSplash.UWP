@@ -328,7 +328,7 @@
     <value>HOW DOES IT WORKS ?</value>
   </data>
   <data name="BackgroundHintContent.Text" xml:space="preserve">
-    <value>Change your wallpaper automatically in background every day. Most wallpapers are from Unsplash and some of them are taken by myself :P</value>
+    <value>Change your wallpaper automatically in background every day.</value>
   </data>
   <data name="ReportByEmailTextBlock.Text" xml:space="preserve">
     <value>REPORT BY EMAIL</value>
