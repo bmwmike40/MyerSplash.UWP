@@ -1,4 +1,6 @@
-# MyerSplash for Windows 10
+# MyerSplash for Windows 11
+
+**MyerSplash and its Highlights feature is no longer updated. Thanks for all your support!**
 
 ![](./design/hero.jpg)
 
