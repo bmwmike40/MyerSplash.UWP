@@ -1,4 +1,4 @@
-# MyerSplash for Windows 11
+# MyerSplash for Windows 11 (No longer update)
 
 **MyerSplash and its Highlights feature is no longer updated. Thanks for all your support!**
 
